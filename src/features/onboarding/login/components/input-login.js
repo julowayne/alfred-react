@@ -7,8 +7,8 @@ import {
 	TouchableOpacity,
 	StyleSheet,
 	Dimensions,
-	Alert
 } from 'react-native';
+import { MARGIN_LEFT } from 'react-native-onboarding-swiper/src/buttons/util';
 const {width, height} = Dimensions.get('window');
 
 export const InputLogin = ({
@@ -29,7 +29,7 @@ export const InputLogin = ({
 				keyboardType={type === 'email' ? 'email-address' : 'default'}
 				secureTextEntry={type === 'password'}  />
 				{type === 'password' ? <TouchableOpacity>
-						<Image source={require('../../../../assets/whiteEyeOpen.png')}
+						<Image source={require('../../../../assets/whiteEye.png')}
 						style={styles.icon} />
 				</TouchableOpacity> : null}
 			</View>
@@ -39,13 +39,16 @@ export const InputLogin = ({
 
 const styles = StyleSheet.create({
 	inputLabel:{
-		color: 'white',
-		fontSize: 28,
+		color: 'black',
+		fontSize: 14,
 		marginTop: 40,
-		fontFamily: 'Montserrat-Bold'
+		fontFamily: 'Montserrat',
+		marginBottom: 10,
+		alignSelf: 'flex-start',
+		marginLeft: 20
 	},
 	inputContainer:{
-		backgroundColor: '#414141',
+		backgroundColor: 'white',
 		width: width * 0.90,
 		height: 45,
 		alignSelf: 'center',
@@ -56,14 +59,15 @@ const styles = StyleSheet.create({
 	},
 	inputContent:{
 		flex:1,
-		color: 'white',
-		fontSize: 16,
-		fontFamily: 'Montserrat-Medium'
+		color: 'black',
+		fontSize: 18,
+		fontFamily: 'Montserrat'
 	},
 	icon: {
-		width: 40,
-		height: 40,
-		marginRight: 5
+		width: 35,
+		height: 35,
+		marginRight: 8,
+		marginTop: 5
 	},
 })
 
