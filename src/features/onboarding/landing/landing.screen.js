@@ -19,7 +19,7 @@ class Landing extends React.Component {
     }));
     console.log('Onboarding fx')
 
-    this.props.navigation.navigate('login');
+    this.props.navigation.navigate('signupNames');
   }
 
   render(){

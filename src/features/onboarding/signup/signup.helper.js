@@ -6,4 +6,8 @@ export const validateEmail = (email) => {
 		);
 };
 
-export default validateEmail;
+export const validatePassword = (password) => {
+	return console.log('faire la regex pour le mdp');
+};
+
+export default {validateEmail, validatePassword};
