@@ -4,6 +4,7 @@ import {
   Image,
 } from 'react-native';
 import styles from './landing.styles'
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AsyncStorage } from '@aws-amplify/core';
 
 

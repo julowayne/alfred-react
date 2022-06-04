@@ -18,16 +18,8 @@ class SignupPassword extends React.Component{
 			})
 		}
 
-
-
 		checkPassword = () => {
-      if(validatePassword(this.state.password)){
-        console.log("if " + this.state.password);
-				this.props.navigation.navigate('signupStatus');
-      }else {
-        console.log('else');
-        console.log(this.state.password);
-      }
+			this.props.navigation.navigate('signin');
 		}
 
     render(){

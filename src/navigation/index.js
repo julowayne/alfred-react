@@ -1,29 +1,23 @@
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import * as React from 'react';
+import {createNavigationContainerRef, NavigationContainer} from '@react-navigation/native';
 
-import Landing from '../features/onboarding/landing/landing.screen';
-import SignupNames from '../features/onboarding/signup/signup-names.screen';
-import signupStatus from '../features/onboarding/signup/signup-status.screen';
-import signupEmail from '../features/onboarding/signup/signup-email.screen';
-import SignupPassword from '../features/onboarding/signup/signup-password.screen';
-
-const Stack = createNativeStackNavigator();
+import appNavigator from './appNavigator';
+import OnBoardingNavigator from './onBoardingNavigator';
+export const navigationRef = createNavigationContainerRef();
 
 const rootContainer = () => {
+
+  let NavComponent;
+
+  // NavComponent = OnBoardingNavigator;
+  NavComponent = OnBoardingNavigator;
+
+  
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="landing" component={Landing} />
-        <Stack.Screen name="signupNames" component={SignupNames} />
-        <Stack.Screen name="signupStatus" component={signupStatus} />
-        <Stack.Screen name="signupEmail" component={signupEmail} />
-        <Stack.Screen name="signupPassword" component={SignupPassword} />
-      </Stack.Navigator>
+    <NavigationContainer ref={navigationRef} >
+      <NavComponent />
     </NavigationContainer>
   );
 };
+
 export default rootContainer;
