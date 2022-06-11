@@ -4,6 +4,7 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   main:{
+    fontFamily: 'Roboto-Regular',
     height: height,
     width: width,
     alignItems: 'center',

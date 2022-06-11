@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     fontSize: 20,
     color: 'black',
+    fontFamily: 'Roboto-Italic'
   },
   centeredView: {
     flex: 1,
@@ -66,8 +67,8 @@ const styles = StyleSheet.create({
     elevation: 2
   },
   modalTitle:{
+    fontFamily: 'Roboto-BlackItalic',
     fontSize: 15,
-    fontWeight: 'bold',
     color: 'black'
   },
   allNotif:{
