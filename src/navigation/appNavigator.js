@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Button
-} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import BottomTabNavigator from "./bottomTabNavigator";
 import Home from "../features/accueil/home.screen";
 const Stack = createNativeStackNavigator();
-
 
 const appNavigator = () => {
     return (

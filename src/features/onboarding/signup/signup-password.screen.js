@@ -19,26 +19,26 @@ class SignupPassword extends React.Component{
 		}
 
 		checkPassword = () => {
-			this.props.navigation.navigate('signin');
+			this.props.navigation.navigate('home');
 		}
 
     render(){
-        return (
-					<KeyboardAvoidingView
+			return (
+				<KeyboardAvoidingView
 					behavior={Platform.OS === "ios" ? "padding" : "height"}
 					style={styles.container}
-				  >
-					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-						<View style={styles.inner}>
-							<Text style={styles.header}>Inscription</Text>
-							<TextInput type="password" placeholder="Mot de passe" secureTextEntry={true} style={styles.emailInput}  onChangeText={password => this.onChangePassword(password)} />
-							<View style={styles.btnContainer}>
-								<Button title="Suivant" onPress={this.checkPassword} />
-							</View>
+				>
+				<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+					<View style={styles.inner}>
+						<Text style={styles.header}>Inscription</Text>
+						<TextInput type="password" placeholder="Mot de passe" secureTextEntry={true} style={styles.emailInput}  onChangeText={password => this.onChangePassword(password)} />
+						<View style={styles.btnContainer}>
+							<Button title="Suivant" onPress={this.checkPassword} />
 						</View>
-					</TouchableWithoutFeedback>
-				</KeyboardAvoidingView>
-        )
+					</View>
+				</TouchableWithoutFeedback>
+			</KeyboardAvoidingView>
+			)
     }
 }
 

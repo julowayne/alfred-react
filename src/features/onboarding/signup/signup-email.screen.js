@@ -42,9 +42,9 @@ class SignupEmail extends React.Component{
     render(){
         return (
 					<KeyboardAvoidingView
-					behavior={Platform.OS === "ios" ? "padding" : "height"}
-					style={styles.container}
-				>
+						behavior={Platform.OS === "ios" ? "padding" : "height"}
+						style={styles.container}
+					>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<View style={styles.inner}>
 							<Text style={styles.header}>Inscription</Text>
@@ -55,7 +55,7 @@ class SignupEmail extends React.Component{
 						</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
-        )
+			)
     }
 }
 

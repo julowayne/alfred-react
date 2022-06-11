@@ -1,17 +1,17 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import {createNavigationContainerRef, NavigationContainer} from '@react-navigation/native';
-
-import appNavigator from './appNavigator';
 import OnBoardingNavigator from './onBoardingNavigator';
+import SplashScreen from 'react-native-splash-screen'
 export const navigationRef = createNavigationContainerRef();
 
 const rootContainer = () => {
-
   let NavComponent;
-
-  // NavComponent = OnBoardingNavigator;
   NavComponent = OnBoardingNavigator;
 
+  useEffect(() => {
+    console.log('dedans')
+    SplashScreen.hide();
+  });
   
   return (
     <NavigationContainer ref={navigationRef} >

@@ -5,6 +5,7 @@ import SignupNames from "../features/onboarding/signup/signup-names.screen";
 import signupStatus from '../features/onboarding/signup/signup-status.screen';
 import signupEmail from '../features/onboarding/signup/signup-email.screen';
 import SignupPassword from '../features/onboarding/signup/signup-password.screen';
+import appNavigator from "./appNavigator";
 const Stack = createNativeStackNavigator();
 
 
@@ -19,6 +20,7 @@ const OnBoardingNavigator = () => {
         <Stack.Screen name="signupStatus" component={signupStatus} />
         <Stack.Screen name="signupEmail" component={signupEmail} />
         <Stack.Screen name="signupPassword" component={SignupPassword} />
+        <Stack.Screen name="appNavigator" component={appNavigator} />
       </Stack.Navigator>
     );
 };

@@ -15,8 +15,8 @@ class SignIn extends React.Component{
     render(){
         return (
 					<KeyboardAvoidingView
-					behavior={Platform.OS === "ios" ? "padding" : "height"}
-					style={styles.container}
+						behavior={Platform.OS === "ios" ? "padding" : "height"}
+						style={styles.container}
 				  >
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<View style={styles.main}>
@@ -28,7 +28,7 @@ class SignIn extends React.Component{
 						</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
-        )
+			)
     }
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
 import styles from './signup-names.styles';
-
+import {connect} from 'react-redux';
+import {setOpenFirst } from '../landing/landing.redux'
 
 class SignupNames extends React.Component{
 		constructor(props){
@@ -12,8 +13,11 @@ class SignupNames extends React.Component{
 			}
 		}
 
-		onChangeFirstname = (firstname) => {
+		componentDidMount(){
+			this.props.setOpenFirst(true)
+		}
 
+		onChangeFirstname = (firstname) => {
 			this.setState({
 				firstname
 			})
@@ -36,9 +40,9 @@ class SignupNames extends React.Component{
     render(){
         return (
 					<KeyboardAvoidingView
-					behavior={Platform.OS === "ios" ? "padding" : "height"}
-					style={styles.container}
-				>
+						behavior={Platform.OS === "ios" ? "padding" : "height"}
+						style={styles.container}
+					>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<View style={styles.inner}>
 							<Text style={styles.header}>Inscription</Text>
@@ -50,8 +54,18 @@ class SignupNames extends React.Component{
 						</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
-        )
+			)
     }
 }
 
-export default SignupNames;
+const mapStateToProps = state => {
+  return {}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setOpenFirst: (openedFirst) => dispatch(setOpenFirst(openedFirst))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupNames)

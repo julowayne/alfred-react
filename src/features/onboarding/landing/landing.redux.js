@@ -1,9 +1,11 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 
+
 const initialState = {
     vins: [],
     name: 'toto',
-    vendeurs: []
+    vendeurs: [],
+    openedFirst : false
 }
 
 export const landingSlice = createSlice({
@@ -18,13 +20,17 @@ export const landingSlice = createSlice({
         },
         setName: (state, action) => {
             state.name = action.payload
+        },
+        setOpenFirst : (state, action) => {
+            state.openedFirst = action.payload
         }
     }
 })
 
-export const {updateVins, updateVendeurs, setName} = landingSlice.actions
+export const {updateVins, updateVendeurs, setName, setOpenFirst} = landingSlice.actions
 export const selectSelf = state => state[landingSlice.name]
 export const selectVins = createSelector(selectSelf, state => state.vins)
 export const selectName = createSelector(selectSelf, state => state.name)
+export const selectOpenFirst = createSelector(selectSelf, state => state.openedFirst)
 
 export default landingSlice.reducer
