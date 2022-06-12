@@ -18,6 +18,7 @@ class HeaderNavigation extends React.Component {
   render(){
     const { modalVisible } = this.state;
     return (
+      <View style={{ overflow: 'hidden', paddingBottom: 5 }}>
       <View style={styles.header}>
         <View style={styles.content}>
           <TouchableOpacity
@@ -57,6 +58,7 @@ class HeaderNavigation extends React.Component {
             <Image source={require('../../assets/notification.png')}/>
           </TouchableOpacity>
         </View>
+      </View>
       </View>
     );
   }

@@ -54,6 +54,7 @@ renderItem = ({ item }) => (
         </Text>
         <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>  
           <FlatList
+            nestedScrollEnabled 
             keyExtractor={this.keyExtractor}
             data={this.state.list}
             renderItem={this.renderItem}

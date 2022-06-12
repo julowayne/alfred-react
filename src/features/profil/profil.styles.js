@@ -9,6 +9,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#e9ecef',
     padding: 15
   },
+  container: {
+    flex: 1
+  },
 })
 
 export default styles;

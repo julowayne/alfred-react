@@ -8,6 +8,11 @@ const styles = StyleSheet.create({
     padding: 15,
     justifyContent: 'center',
     backgroundColor: '#20c997',
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity:  0.4,
+    shadowRadius: 3,
+    elevation: 5,
   },
   content : {
     flex: 1,

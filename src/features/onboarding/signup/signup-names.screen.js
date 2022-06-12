@@ -44,14 +44,24 @@ class SignupNames extends React.Component{
 						style={styles.container}
 					>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-						<View style={styles.inner}>
+					<View>
+						<View style={styles.headerCtn}>
 							<Text style={styles.header}>Inscription</Text>
-							<TextInput placeholder="Nom" style={styles.lastnameInput}  onChangeText={firstname => this.onChangeFirstname(firstname)} />
-							<TextInput placeholder="Prénom" style={styles.firstnameInput} onChangeText={lastname => this.onChangeLastname(lastname)} />
+						</View>
+						<View style={styles.inner}>
+							<Text style={styles.label}>
+              	Nom
+            	</Text>
+							<TextInput placeholder="Thomas Desessarts" style={styles.input}  onChangeText={firstname => this.onChangeFirstname(firstname)} />
+							<Text style={styles.label}>
+								Prénom
+							</Text>
+							<TextInput placeholder="Jules" style={styles.input} onChangeText={lastname => this.onChangeLastname(lastname)} />
 							<View style={styles.btnContainer}>
 								<Button title="Suivant" onPress={this.checkInputs} />
 							</View>
 						</View>
+					</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
 			)

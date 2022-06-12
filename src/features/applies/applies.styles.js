@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   entitled: {
-    color: 'grey',
+    color: 'black',
     fontSize: 20,
     fontWeight: 'bold'
   },

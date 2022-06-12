@@ -6,7 +6,8 @@ const styles = StyleSheet.create({
   fonctions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 10,
+    borderBottomWidth: 1,
   },
   add :{
     fontSize: 20,
