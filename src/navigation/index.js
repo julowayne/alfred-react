@@ -9,7 +9,6 @@ const rootContainer = () => {
   NavComponent = OnBoardingNavigator;
 
   useEffect(() => {
-    console.log('dedans')
     SplashScreen.hide();
   });
   

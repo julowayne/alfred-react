@@ -2,6 +2,10 @@ import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
 import styles from './signup-names.styles';
 import {validatePassword} from './signup.helper'
+import {connect} from 'react-redux';
+import {setLogging } from '../../onboarding/landing/landing.redux'
+
+
 
 
 class SignupPassword extends React.Component{
@@ -12,6 +16,10 @@ class SignupPassword extends React.Component{
 			}
 		}
 
+		componentDidMount(){
+			this.props.setLogging(true)
+		}
+
 		onChangePassword = (password) => {
 			this.setState({
 				password
@@ -19,7 +27,7 @@ class SignupPassword extends React.Component{
 		}
 
 		checkPassword = () => {
-			this.props.navigation.navigate('home');
+			this.props.navigation.navigate('appNavigator');
 		}
 
     render(){
@@ -42,4 +50,17 @@ class SignupPassword extends React.Component{
     }
 }
 
-export default SignupPassword;
+
+const mapStateToProps = state => {
+  return {
+    // openedFirst : state.landing.openedFirst
+  }
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    setLogging: (logging) => dispatch(setLogging(logging))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupPassword)
+

@@ -22,7 +22,6 @@ class SignupEmail extends React.Component{
 
 		checkEmail = () => {
       if(validateEmail(this.state.email)){
-        console.log("if " + this.state.email);
 				this.props.navigation.navigate('signupPassword');
       }else {
         console.log('else');
