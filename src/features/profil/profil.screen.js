@@ -20,10 +20,10 @@ class Profil extends React.Component {
         >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View>
-        <HeaderNavigation/>
-            <AddFiles/>
-            <MyFile/>
-            <MyProfile/>
+        <HeaderNavigation navigation={this.props.navigation}/>
+          <AddFiles navigation={this.props.navigation}/>
+          <MyFile navigation={this.props.navigation}/>
+          <MyProfile navigation={this.props.navigation}/>
       </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

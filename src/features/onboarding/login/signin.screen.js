@@ -4,18 +4,10 @@ import styles from './signin.styles';
 import {connect} from 'react-redux';
 import {setLogging, setUser } from '../landing/landing.redux';
 import signinServices from './signin.services';
-import {create} from 'apisauce';
-import axios from "axios";
 
 
-// const axios = require('axios').default;
 const api = signinServices.create();
-// const api = create({
-// 	baseURL: 'https://alfred-api-eu.herokuapp.com/api',
-// 	headers :{
-// 		'Accept' : 'application/json'
-// 	}
-// });
+
 
 class SignIn extends React.Component{
 		constructor(props){
@@ -52,23 +44,9 @@ class SignIn extends React.Component{
 
 		loggin = async () => {
 			console.log('logging  ' + this.state.user.email + '   ' + this.state.user.password);
-
-			// test axios
-			// axios.post('http://alfred-api-eu.herokuapp.com/api/auth/login', {
-			// 	email : this.state.user.email, password :this.state.user.password
-			// })
-			// .then(function (response) {
-			// 	console.log(response);
-			// })
-			// .catch(function (error) {
-			// 	console.log(error);
-			// });
-
-
-			// test apisauce
-			// await api.logging(this.state.user.email, this.state.user.password).then(res => res.json).then(response => console.log(response))
 			const response = await api.logging(this.state.user.email, this.state.user.password)
 			console.log('response:', JSON.stringify(response))
+			this.goToHome()		
 		}
 
     render(){

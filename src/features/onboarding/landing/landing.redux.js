@@ -5,8 +5,8 @@ const initialState = {
     vins: [],
     name: 'toto',
     vendeurs: [],
-    openedFirst : false, // onboarding
-    logging : false, // sign-in / sign-up
+    openedFirst : false, // onboarding (TO FALSE)
+    logging : false, // sign-in / sign-up (TO FALSE)
     user : {}
 }
 

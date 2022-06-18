@@ -11,7 +11,8 @@ import {setLogging } from '../onboarding/landing/landing.redux'
 class Home extends React.Component {
   constructor(props){
     super(props)
-    console.log('home logging : ' + props.logging)
+    console.log(props)
+    // console.log('home logging : ' + props.logging)
     if(props.logging === true){
       props.navigation.navigate('appNavigator')
     } else {

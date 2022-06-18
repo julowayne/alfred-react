@@ -1,46 +1,46 @@
 import React from 'react';
-import {Text, View } from 'react-native';
+import {View, Button } from 'react-native';
 import styles from './my-profile.styles'
-import { Card } from '@rneui/themed';
-import { TextInput } from 'react-native-gesture-handler';
+import {connect} from 'react-redux';
+import {setLogging, setUser } from '../../onboarding/landing/landing.redux';
+
+
 
 
 class MyProfile extends React.Component {
   constructor(props){
     super(props)
+    console.log(props)
+  }
+
+  logout = () => {
+    this.props.setLogging(false)
+    this.props.setUser({})
+    this.props.navigation.navigate('authNavigator')
   }
 
   render(){
     return (
       <View style={styles.container}>
-          <Text style={styles.title}>
-            Mes informations
-          </Text>
-          <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>  
-            <Text style={styles.label}>
-              Nom
-            </Text>
-            <TextInput style={styles.input} type="text" placeholder="Nom"/>
-            <Text style={styles.label}>
-              Prénom
-            </Text>
-            <TextInput style={styles.input} type="text" placeholder="Prénom"/>
-            <Text style={styles.label}>
-              Status
-            </Text>
-            <TextInput style={styles.input} type="text" placeholder="Status"/>
-            <Text style={styles.label}>
-              E-mail
-            </Text>
-            <TextInput style={styles.input} type="email" placeholder="E-mail"/>
-            <Text style={styles.label}>
-              Mot de passe
-            </Text>
-            <TextInput style={styles.input} type="password" placeholder="Nom"/>
-          </Card>
+        <Button onPress={this.logout} title="me deconnecter"/>
       </View>
     );
   }
 }
 
-export default MyProfile;
+const mapStateToProps = state => {
+  return {
+    logging: state.landing.logging,
+    user: state.landing.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setLogging: (loggin) => dispatch(setLogging(loggin)),
+    setUser: (user) => dispatch(setUser(user))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile)
+

@@ -2,12 +2,13 @@ import React from 'react';
 import {
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Button
 } from 'react-native';
-import * as Progress from 'react-native-progress';
-import { Card, Button, Icon } from '@rneui/themed';
+import { Card, Icon, Badge } from '@rneui/themed';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import styles from './applies.styles'
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 class Applies extends React.Component {
@@ -21,91 +22,52 @@ class Applies extends React.Component {
         <HeaderNavigation/>
         <View style={styles.container}>
           <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>
-            <Card.Title style={styles.title}>Dossier 1</Card.Title>
-            <Card.Divider />
+            <Card.Image source={require('../../assets/lynn-vdbr-9KSoHS5_xiM-unsplash.jpg')}/>
+            <View style={styles.cardBadge}>
+              {/* Faire redescendre bgcolor & text de la DB */}
+              <View style={[styles.badge,{ backgroundColor: 'green'}]}>
+                <Text style={styles.badgeText}>Accepté</Text>
+              </View>
+            </View> 
+            <View style={styles.description}>
+                <View style={styles.cardPart}>
+                  <Text style={styles.location}>
+                  <Icon  name="location-sharp" type="ionicon"/> Houilles
+                  </Text>
+                </View>
+                <View>
+                  <Text style={styles.value}>
+                    Appartement meublé
+                  </Text>
+                  <Text style={styles.value}>
+                    3 pièces 2 chambres 40m²
+                  </Text>
+                </View>
+            </View> 
             <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Agence : 
-              </Text>
-              <Text style={styles.value} h1>
-                Century 21
+            <Icon name="pricetag" type="ionicon"/>
+              <Text style={styles.iconsValues}>
+                900 € 
               </Text>
             </View>
             <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Dossier : 
-              </Text>
-              <Text style={styles.value} h1>
-                Complet
-              </Text>
-            </View>
-            <Progress.Bar style={styles.progressBar} progress={1}  width={200} height={15} />
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Status : 
-              </Text>
-              <Text style={styles.value} h1>
-                En attente de traitement
-              </Text>
-            </View>
-          </Card>
-          <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>
-            <Card.Title style={styles.title}>Dossier 1</Card.Title>
-            <Card.Divider />
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Agence : 
-              </Text>
-              <Text style={styles.value} h1>
-                Century 21
-              </Text>
-            </View>
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Dossier : 
-              </Text>
-              <Text style={styles.value} h1>
-                Complet
-              </Text>
-            </View>
-            <Progress.Bar style={styles.progressBar} progress={0.7}  width={200} height={15} />
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Status : 
-              </Text>
-              <Text style={styles.value} h1>
-                Vous devez compler votre dossier.
-              </Text>
-            </View>
-          </Card>
-          <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>
-            <Card.Title style={styles.title}>Dossier 2</Card.Title>
-            <Card.Divider />
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Agence : 
-              </Text>
-              <Text style={styles.value} h1>
-                Seloger
-              </Text>
-            </View>
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Dossier : 
-              </Text>
-              <Text style={styles.value} h1>
-                Incomplet
-              </Text>
-            </View>
-            <Progress.Bar style={styles.progressBar} progress={0.3}  width={200} height={15} />
-            <View style={styles.cardPart}>
-              <Text style={styles.entitled} h1>
-                Status : 
-              </Text>
-              <Text style={styles.value} h1>
-                Vous devez compler votre dossier.
-              </Text>
-            </View>
+              <Card containerStyle={{ marginTop: 15, borderRadius: 10, flex: 1 }}>
+                <View style={styles.agencyCnt}>
+                  <View>
+                    <Icon size={50} name="md-home" type="ionicon"/>
+                  </View>
+                  <View style={styles.agency}>
+                    <Text style={styles.agencyName}>
+                      Century 21
+                    </Text>
+                    <Text>
+                      Contacter mon agent
+                    </Text>
+                  </View>
+                </View>
+                <Button style={styles.redirection} title="Revoir l'annonce"/>
+              </Card>
+            </View>                  
           </Card>
         </View>
       </ScrollView>
