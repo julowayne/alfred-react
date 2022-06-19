@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#e9ecef',
     padding: 15
   },
-  container: {
-    flex: 1
+  logout: {
+    marginTop: 10,
+    padding: 20
   },
 })
 

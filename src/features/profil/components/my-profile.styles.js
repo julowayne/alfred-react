@@ -5,7 +5,7 @@ const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
   container :{
     marginTop: 20,
-    padding: 10
+    padding: 20
   },
   title :{
     fontSize: 20,

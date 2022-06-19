@@ -3,8 +3,12 @@ import { Text, View, TouchableOpacity, Button } from 'react-native';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import styles from './home.styles'
 import {connect} from 'react-redux';
-import {setLogging } from '../onboarding/landing/landing.redux'
+import {setLogging, setFields } from '../onboarding/landing/landing.redux'
 
+import addFilesServices from './home.services'
+
+
+const api = addFilesServices.create();
 
 
 
@@ -18,6 +22,15 @@ class Home extends React.Component {
     } else {
       props.navigation.navigate('authNavigator')
     }
+  }
+  componentDidMount(){
+    this.getFileTypes()
+  }
+
+  getFileTypes = async () => {
+    const response = await api.fields()
+    console.log('response:', JSON.stringify(response))
+    this.props.setFields(response.data.data)
   }
 
   logout = () => {
@@ -42,12 +55,14 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    logging: state.landing.logging
+    logging: state.landing.logging,
+    fields: state.landing.fields
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    setLogging: (loggin) => dispatch(setLogging(loggin))
+    setLogging: (loggin) => dispatch(setLogging(loggin)),
+    setFields: (fields) => dispatch(setFields(fields))
   };
 };
 

@@ -22,7 +22,7 @@ class MyProfile extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <Button onPress={this.logout} title="me deconnecter"/>
+        <Button onPress={this.logout} title="Mon profil"/>
       </View>
     );
   }
