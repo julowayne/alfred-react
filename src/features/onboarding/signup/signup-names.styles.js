@@ -40,9 +40,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black'
   },
-  placeholderFont: {
-    fontFamily: 'Roboto-Italic',  
-  },
   input: {
     fontFamily: 'Roboto-Regular',
     height: 40,

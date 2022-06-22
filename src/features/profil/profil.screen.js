@@ -1,5 +1,5 @@
 import React from 'react';
-import { KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard , View, Button } from 'react-native';
+import { KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard , View, TouchableOpacity, Text } from 'react-native';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import MyFile from './components/my-file.screen';
 import MyProfile from './components/my-profile.screen';
@@ -28,12 +28,13 @@ class Profil extends React.Component {
         >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View>
-            <HeaderNavigation navigation={this.props.navigation}/>
-            {/* <AddFiles navigation={this.props.navigation}/> */}
+            <HeaderNavigation headerTitle="Mon profil"  navigation={this.props.navigation}/>
             <MyFile navigation={this.props.navigation}/>
             <MyProfile navigation={this.props.navigation}/>
             <View style={styles.logout}>
-              <Button onPress={this.logout} title="me deconnecter"/>
+              <TouchableOpacity style={styles.logoutButton} onPress={this.logout}>
+                <Text style={styles.logoutText}>Me déconnecter</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </TouchableWithoutFeedback>

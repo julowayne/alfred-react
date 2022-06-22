@@ -1,28 +1,27 @@
 import React from 'react';
-import { Button, View, FlatList } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './my-file.styles'
 
 
 class MyFile extends React.Component {
   constructor(props){
     super(props)
-    this.state = {
-    }
   }
 
 
 openFileModal = () => {
-  this.props.navigation.navigate('files')
+  this.props.navigation.navigate('Mes fichiers')
 }
 
-
-  render(){
-    return (
-      <View style={styles.container}>
-        <Button onPress={this.openFileModal} title="Mes dossiers"/>   
-      </View>
-    );
-  }
+render(){
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.filesButton} onPress={this.openFileModal}>
+        <Text style={styles.filesText}>Mes dossiers</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
 }
 
 export default MyFile;

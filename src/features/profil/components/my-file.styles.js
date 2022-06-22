@@ -5,15 +5,20 @@ const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
   container :{
     marginTop: 15,
-    padding: 20
+    padding: 15
   },
-  title :{
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    marginLeft: 20,
-    fontFamily: 'Roboto-Regular',
-    marginBottom: -10
+  filesButton :{
+    height: 80,
+    borderRadius: 6,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
+  },
+  filesText: {
+    color: '#007bff',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 20
   }
 })
 

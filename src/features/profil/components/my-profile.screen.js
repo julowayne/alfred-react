@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button } from 'react-native';
+import {View, TouchableOpacity, Text, TextInput } from 'react-native';
 import styles from './my-profile.styles'
 import {connect} from 'react-redux';
 import {setLogging, setUser } from '../../onboarding/landing/landing.redux';
@@ -13,16 +13,17 @@ class MyProfile extends React.Component {
     console.log(props)
   }
 
-  logout = () => {
-    this.props.setLogging(false)
-    this.props.setUser({})
-    this.props.navigation.navigate('authNavigator')
+  profilSettings = () => {
+    // Profil page
+    this.props.navigation.navigate('Mettre à jour mon profil')
   }
 
   render(){
     return (
       <View style={styles.container}>
-        <Button onPress={this.logout} title="Mon profil"/>
+        <TouchableOpacity style={styles.profilButton} onPress={this.profilSettings}>
+          <Text style={styles.profilText}>Mon profil</Text>
+        </TouchableOpacity>
       </View>
     );
   }

@@ -1,11 +1,13 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Button } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
+import { Card } from '@rneui/themed';
 import styles from './home.styles'
 import {connect} from 'react-redux';
 import {setLogging, setFields } from '../onboarding/landing/landing.redux'
 
 import addFilesServices from './home.services'
+import Agencies from './components/agencies.screen';
 
 
 const api = addFilesServices.create();
@@ -16,7 +18,6 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     console.log(props)
-    // console.log('home logging : ' + props.logging)
     if(props.logging === true){
       props.navigation.navigate('appNavigator')
     } else {
@@ -38,16 +39,29 @@ class Home extends React.Component {
     this.props.navigation.navigate('authNavigator')
   }
 
+  goToApplies = () => {
+    // this.props.navigation.navigate('authNavigator')
+    // Redirect to applies
+  }
+
   render(){
     return (
       <View>
-        <HeaderNavigation/>
-        <Text style={styles.main}>
-          Home
-          <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
+        <HeaderNavigation headerTitle="Accueil" />
+        <View style={styles.main}>
+          <Text style={styles.hello}>
+            Bonjour Jules !
+          </Text>
+          <Card containerStyle={styles.followAppliesCnt}>
+            <Text style={styles.followAppliesText}>
+            Tu as <Text onPress={this.goToApplies} style={styles.currentApplies}>4 dossiers en cours</Text>, n'hésites pas a suivre leur évolution !
+            </Text>               
+          </Card>
+          <Agencies/>
+          {/* <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
             <Button title="deconnection" onPress={this.logout}/>
-          </TouchableOpacity>
-        </Text>
+          </TouchableOpacity> */}
+        </View>
       </View>
     );
   }
@@ -56,7 +70,8 @@ class Home extends React.Component {
 const mapStateToProps = state => {
   return {
     logging: state.landing.logging,
-    fields: state.landing.fields
+    fields: state.landing.fields,
+    user: state.landing.user
   }
 }
 const mapDispatchToProps = dispatch => {

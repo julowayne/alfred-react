@@ -30,8 +30,11 @@ class SignuStatus extends React.Component{
 						style={styles.container}
 					>
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-						<View style={styles.inner}>
+					<View>
+						<View style={styles.headerCtn}>
 							<Text style={styles.header}>Inscription</Text>
+						</View>
+						<View style={styles.inner}>
 							<Picker selectedValue = {this.state.status} onValueChange={this.updateStatus}>
 								<Picker.Item label="Salarié / Fonctionnaire" value="Salarié / Fonctionnaire" />
 								<Picker.Item label="Indépendant / Dirigeant" value="Indépendant / Dirigeant" />
@@ -44,6 +47,7 @@ class SignuStatus extends React.Component{
 								<Button title="Suivant" onPress={this.checkInputs} />
 							</View>
 						</View>
+					</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
         )

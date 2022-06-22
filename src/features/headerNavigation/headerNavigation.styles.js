@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
   },
   navText: {
     alignItems: 'center',
-    marginHorizontal: 10,
+    marginHorizontal: 8,
     fontSize: 20,
     color: 'black',
-    fontFamily: 'Roboto-Italic'
+    fontFamily: 'Roboto-Medium'
   },
   centeredView: {
     flex: 1,

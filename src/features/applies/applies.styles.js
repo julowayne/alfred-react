@@ -85,6 +85,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontFamily: 'Roboto-Bold'
+  },
+  lottie: {
+    width: 100,
+    height: 100
   }
 })
 

@@ -69,13 +69,6 @@ const styles = StyleSheet.create({
   picker :{
     marginVertical: 20
   },
-  upload: {
-    paddingVertical: 10,
-    backgroundColor: 'blue',
-    alignItems: 'center',
-    marginHorizontal: 50,
-    borderRadius: 6
-  },
   uploadText: {
     color: 'white',
     fontFamily: 'Roboto-Bold',

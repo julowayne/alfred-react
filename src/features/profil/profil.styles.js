@@ -11,8 +11,21 @@ const styles = StyleSheet.create({
   },
   logout: {
     marginTop: 10,
-    padding: 20
+    padding: 15
   },
+  logoutButton :{
+    height: 80,
+    borderRadius: 6,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
+  },
+  logoutText: {
+    color: '#007bff',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 20
+  }
 })
 
 export default styles;

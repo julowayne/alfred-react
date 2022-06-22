@@ -7,12 +7,29 @@ const styles = StyleSheet.create({
   },
   inner: {
     padding: 24,
-    flex: 1,
+  },
+  headerCtn: {
+    overflow: 'hidden', 
+    paddingBottom: 5, 
+    elevation: 10,
+    marginBottom: 36,
   },
   header: {
+    fontFamily: 'Roboto-Regular',
+    padding: 20,
     fontSize: 36,
-    marginBottom: 48,
-    color: "#000000"
+    color: "#000000",
+    backgroundColor: '#20c997',
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity:  0.4,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  btnContainer: {
+    backgroundColor: "white",
+    marginTop: 24,
+    marginBottom: 12
   },
   me :{
     paddingLeft: 15,

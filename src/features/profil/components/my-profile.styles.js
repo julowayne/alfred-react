@@ -5,7 +5,7 @@ const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
   container :{
     marginTop: 20,
-    padding: 20
+    padding: 15
   },
   title :{
     fontSize: 20,
@@ -26,6 +26,19 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 10,
     borderColor: '#20c997',
+  },
+  profilButton :{
+    height: 80,
+    borderRadius: 6,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
+  },
+  profilText: {
+    color: '#007bff',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 20
   }
 })
 

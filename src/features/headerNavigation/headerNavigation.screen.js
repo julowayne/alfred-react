@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image, Modal } from 'react-native';
+import { Avatar, Badge, Icon, withBadge } from 'react-native-elements'
 import Notification from '../notifications/notification.screen';
 import styles from './headerNavigation.styles'
 
@@ -26,8 +27,7 @@ class HeaderNavigation extends React.Component {
               onPress={this.onPress}
             >
             <View style={styles.navigation}>
-              <Image source={require('../../assets/accueil3.png')}/>
-              <Text style={styles.navText}>Test</Text>
+              <Text style={styles.navText}>{this.props.headerTitle}</Text>
             </View>
           </TouchableOpacity>
           <View style={styles.centeredView}>
@@ -56,6 +56,7 @@ class HeaderNavigation extends React.Component {
           </View>
           <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
             <Image source={require('../../assets/notification.png')}/>
+            <Badge status="error" value="10" containerStyle={{ position: 'absolute', top: -4, right: -4 }} badgeStyle={{borderWidth: 0}} />
           </TouchableOpacity>
         </View>
       </View>

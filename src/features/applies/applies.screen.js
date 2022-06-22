@@ -6,21 +6,39 @@ import {
   Button
 } from 'react-native';
 import { Card, Icon, Badge } from '@rneui/themed';
+import AnimatedLoader from "react-native-animated-loader";
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import styles from './applies.styles'
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 class Applies extends React.Component {
   constructor(props){
     super(props)
+    this.state = { visible: false };
   }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.setState({
+  //       visible: !this.state.visible
+  //     });
+  //     }, 2000);
+  // }
 
   render(){
+    const { visible } = this.state;
     return (
       <ScrollView>
-        <HeaderNavigation/>
+        <HeaderNavigation headerTitle="Dossiers"/>
         <View style={styles.container}>
+        {/* <AnimatedLoader
+          visible={this.state.visible}
+          overlayColor="rgba(255,255,255,0.75)"
+          source={require("../../assets/loader.json")}
+          animationStyle={styles.lottie}
+          speed={1}
+        >
+          <Text>Doing something...</Text>
+        </AnimatedLoader> */}
           <Card containerStyle={{ marginTop: 15, borderRadius: 10 }}>
             <Card.Image source={require('../../assets/lynn-vdbr-9KSoHS5_xiM-unsplash.jpg')}/>
             <View style={styles.cardBadge}>

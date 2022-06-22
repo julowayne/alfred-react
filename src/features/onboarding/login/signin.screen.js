@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard  } from 'react-native';
+import { View, KeyboardAvoidingView, TextInput, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Text  } from 'react-native';
 import styles from './signin.styles';
 import {connect} from 'react-redux';
 import {setLogging, setUser } from '../landing/landing.redux';
@@ -12,7 +12,6 @@ const api = signinServices.create();
 class SignIn extends React.Component{
 		constructor(props){
 			super(props)
-
 			this.state = {
 				user: {
 					email: '',
@@ -57,22 +56,28 @@ class SignIn extends React.Component{
 				  >
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 						<View style={styles.main}>
+							<View>
 							<TextInput type="email" 
 								onChangeText={newValue => this.onChangeEmail(newValue)}
 								value={this.state.user.email} 
 								placeholder="Email"
-								style={styles.emailInput}  
+								style={styles.input} 
 							/>
 							<TextInput type="password"
 								onChangeText={newValue => this.onChangePassword(newValue)}
 								value={this.state.user.password} 
-								placeholder="Mot de passe" 
-								style={styles.emailInput}  
+								placeholder="Mot de passe"
+								secureTextEntry={true}
+								style={styles.input}  
 							/>
-							<View style={styles.btnContainer}>
+							{/* <View style={styles.btnContainer}>
 								<Button title="Me connecter" onPress={this.loggin} />
-							</View>
+							</View> */}
+							<TouchableOpacity style={styles.profilButton} onPress={this.profilSettings}>
+								<Text style={styles.profilText}>Me connecter</Text>
+							</TouchableOpacity>
 						</View>
+					</View>
 					</TouchableWithoutFeedback>
 				</KeyboardAvoidingView>
 			)
