@@ -6,10 +6,11 @@ const styles = StyleSheet.create({
   main:{
     padding: 30,
     justifyContent: 'center',
-    marginTop: 150
+    marginTop: 150,
   },
   container:{
-    flex: 1
+    flex: 1,
+    backgroundColor: '#e9ecef',
   },
   label:{
     marginBottom: 4,
@@ -21,14 +22,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Regular',
     height: 55,
     marginBottom: 15,
-    borderWidth: 1,
+    borderWidth: 0,
     borderRadius: 4,
     padding: 10,
-    borderColor: '#20c997',
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    backgroundColor: 'white',
+    elevation: 3
   },
   profilButton :{
     height: 65,

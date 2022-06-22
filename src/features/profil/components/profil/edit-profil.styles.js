@@ -12,10 +12,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: 40,
     marginBottom: 15,
-    borderWidth: 1,
     borderRadius: 4,
     padding: 10,
-    borderColor: '#20c997',
+    elevation: 3
   },
   label :{
     fontFamily: 'Roboto-Regular',

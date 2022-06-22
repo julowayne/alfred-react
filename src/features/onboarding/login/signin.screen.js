@@ -70,10 +70,7 @@ class SignIn extends React.Component{
 								secureTextEntry={true}
 								style={styles.input}  
 							/>
-							{/* <View style={styles.btnContainer}>
-								<Button title="Me connecter" onPress={this.loggin} />
-							</View> */}
-							<TouchableOpacity style={styles.profilButton} onPress={this.profilSettings}>
+							<TouchableOpacity style={styles.profilButton} onPress={this.loggin} >
 								<Text style={styles.profilText}>Me connecter</Text>
 							</TouchableOpacity>
 						</View>
