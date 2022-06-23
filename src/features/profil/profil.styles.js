@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     padding: 15
   },
   logoutButton :{
-    height: 80,
+    height: 70,
     borderRadius: 6,
     backgroundColor: 'white',
     justifyContent: 'center',

@@ -6,7 +6,16 @@ const styles = StyleSheet.create({
   main:{
     padding: 30,
     justifyContent: 'center',
-    marginTop: 150,
+    // marginTop: 150,
+  },
+  logoCnt :{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo :{
+    marginTop: 40,
+    width: 180,
+    height: 180,
   },
   container:{
     flex: 1,
@@ -29,7 +38,7 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   profilButton :{
-    height: 65,
+    height: 50,
     borderRadius: 6,
     backgroundColor: '#007bff',
     justifyContent: 'center',

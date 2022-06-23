@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     color:'black',
   },
   currentApplies: {
-    color: '#20c997'
+    color: '#007bff'
   }
 })
 

@@ -15,6 +15,11 @@ class HeaderNavigation extends React.Component {
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
+  openNotification = () => {
+    // this.props.navigation.navigate('Notification')
+    this.props.navigation.navigate('Notifications')
+
+  }
 
   render(){
     const { modalVisible } = this.state;
@@ -30,7 +35,7 @@ class HeaderNavigation extends React.Component {
               <Text style={styles.navText}>{this.props.headerTitle}</Text>
             </View>
           </TouchableOpacity>
-          <View style={styles.centeredView}>
+          {/* <View style={styles.centeredView}>
             <Modal
               animationType="fade"
               transparent={true}
@@ -53,10 +58,12 @@ class HeaderNavigation extends React.Component {
                 </View>
               </View>
             </Modal>
-          </View>
-          <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
+          </View> */}
+          {/* <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}> */}
+          <TouchableOpacity onPress={this.openNotification}>
             <Image source={require('../../assets/notification.png')}/>
-            <Badge status="error" value="10" containerStyle={{ position: 'absolute', top: -4, right: -4 }} badgeStyle={{borderWidth: 0}} />
+            {/* <Notification navigation={this.props.navigation}/> */}
+            {/* <Badge status="error" value="10" containerStyle={{ position: 'absolute', top: -4, right: -4 }} badgeStyle={{borderWidth: 0}} /> */}
           </TouchableOpacity>
         </View>
       </View>

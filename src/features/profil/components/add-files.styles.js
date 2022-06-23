@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     elevation: 2
   },
   modalTitle:{
-    fontFamily: 'Roboto-BlackItalic',
+    fontFamily: 'Roboto-Regular',
     fontSize: 15,
     color: 'black'
   },
@@ -73,7 +73,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Roboto-Bold',
     fontSize: 15,
-  }
+  },
+  upload: {
+    paddingVertical: 10,
+    backgroundColor: 'blue',
+    alignItems: 'center',
+    marginHorizontal: 50,
+    borderRadius: 6,
+    borderWidth: 0,
+    elevation: 4
+  },
 })
 
 export default styles;

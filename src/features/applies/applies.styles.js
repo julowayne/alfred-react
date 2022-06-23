@@ -7,7 +7,8 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    padding: 10,
+    flexDirection: 'row',
   },
   title :{
     fontSize: 20,
@@ -45,9 +46,9 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   image: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+    // width: 50,
+    // height: 50,
+    // marginRight: 10,
   },
   name: {
     fontSize: 16,
@@ -68,6 +69,11 @@ const styles = StyleSheet.create({
     elevation: 20
   },
   //Badges
+  cardCntStyle :{
+    marginTop: 15,
+    borderRadius: 10,
+    width: width - 80
+  },
   cardBadge : {
     alignItems: 'flex-end',
     top : -130,

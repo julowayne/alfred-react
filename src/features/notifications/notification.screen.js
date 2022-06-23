@@ -9,14 +9,19 @@ class Notification extends React.Component {
     this.state = {
       list :[
         {
-          name: 'Mise à jour du status',
-          avatar_url: require('../../assets/alfred_splash2.png'),
+          name: 'Mise à jour',
+          avatar_url: require('../../assets/alfred32.png'),
           content: "Votre dossier pour la location X a été refusé"
         },
         {
-          name: 'Mise à jour du status',
-          avatar_url: require('../../assets/alfred_splash2.png'),
-          content: "Votre agent vous informe qu'il manque des fichiers pour votre dossier"
+          name: 'Mise à jour',
+          avatar_url: require('../../assets/alfred32.png'),
+          content: "Votre agent vous informe qu'il manque des fichiers pour votre dossier pour le logement Y"
+        },
+        {
+          name: 'Mise à jour',
+          avatar_url: require('../../assets/alfred32.png'),
+          content: "Votre dossier pour la l'appartement 234 est en cours de traitement"
         },
       ],
     }
@@ -37,13 +42,14 @@ renderItem = ({ item }) => (
 
   render(){
     return (
-      <Card containerStyle={styles.cardCnt}>  
+      <View>
         <FlatList
+          nestedScrollEnabled 
           keyExtractor={this.keyExtractor}
           data={this.state.list}
           renderItem={this.renderItem}
         />
-      </Card>
+      </View>
     );
   }
 }

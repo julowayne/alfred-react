@@ -16,6 +16,7 @@ class EditProfil extends React.Component {
     return (
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
+          // behavior='padding'
           style={styles.container}
         >
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -32,6 +33,9 @@ class EditProfil extends React.Component {
               <TextInput placeholder="Jules" style={styles.input} />
               <Text style={styles.label}>Garant</Text>
               <Text>(Note :Garant géré avec les des buttons radios)</Text>
+              <TouchableOpacity style={styles.profilButton} onPress={this.loggin} >
+								<Text style={styles.profilText}>Enregistrer</Text>
+							</TouchableOpacity>
             </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

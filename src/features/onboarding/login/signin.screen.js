@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Text  } from 'react-native';
+import { View, KeyboardAvoidingView, TextInput, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Text, Image  } from 'react-native';
 import styles from './signin.styles';
 import {connect} from 'react-redux';
 import {setLogging, setUser } from '../landing/landing.redux';
@@ -55,8 +55,11 @@ class SignIn extends React.Component{
 						style={styles.container}
 				  >
 					<TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-						<View style={styles.main}>
-							<View>
+						<View>
+						<View style={styles.logoCnt}>
+							<Image style={styles.logo} source={require('../../../assets/logo.png')} />
+						</View>
+							<View style={styles.main}>
 							<TextInput type="email" 
 								onChangeText={newValue => this.onChangeEmail(newValue)}
 								value={this.state.user.email} 

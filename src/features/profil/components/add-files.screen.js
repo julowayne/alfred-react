@@ -124,7 +124,7 @@ class AddFiles extends React.Component {
               <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                 <View style={styles.notifTitle}>
-                  <Text style={styles.modalTitle}>Quel fichier téléchargez-vous ?</Text>
+                  <Text style={styles.modalTitle}>Choisis ton fichier </Text>
                   <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
                     <Image source={require('../../../assets/close.png')}/>
                   </TouchableOpacity>
@@ -139,7 +139,7 @@ class AddFiles extends React.Component {
                           return (<Picker.Item label={item.name} value={item.id} key={index}/>) 
                       })}
                     </Picker>
-                    <TouchableOpacity style={styles.upload} onPress={() => {this.uploadFilesToDB(this.state.result, )}}>
+                    <TouchableOpacity style={styles.upload} onPress={() => {this.uploadFilesToDB(this.state.result)}}>
                         <Text style={styles.uploadText}>Envoyer</Text>
                     </TouchableOpacity>
                   </View>

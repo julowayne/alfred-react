@@ -47,7 +47,7 @@ class Home extends React.Component {
   render(){
     return (
       <View>
-        <HeaderNavigation headerTitle="Accueil" />
+        <HeaderNavigation headerTitle="Accueil" navigation={this.props.navigation}/>
         <View style={styles.main}>
           <Text style={styles.hello}>
             Bonjour Jules !

@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     borderColor: '#20c997',
   },
   profilButton :{
-    height: 80,
+    height: 70,
     borderRadius: 6,
     backgroundColor: 'white',
     justifyContent: 'center',
