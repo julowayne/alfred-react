@@ -17,6 +17,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10
   },
+  yourFile :{
+    padding: 15,
+    fontFamily: 'Roboto-Regular',
+    fontSize: 20,
+    color: 'black',
+    alignContent: 'center'
+  },
+  pdf :{
+    marginRight: 50
+  },
   image : {
     marginRight: 10
   },
@@ -49,7 +59,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#20c997',
     flexDirection: 'row',
     padding: 15,
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     shadowColor: "#000",
@@ -61,13 +71,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2
   },
-  modalTitle:{
-    fontFamily: 'Roboto-Regular',
-    fontSize: 15,
-    color: 'black'
+  pickerCnt :{
+    BorderWidth: 1, 
+    BorderColor: '#007bff', 
+    BorderRadius: 4 
   },
   picker :{
-    marginVertical: 20
+    marginVertical: 10
   },
   uploadText: {
     color: 'white',
@@ -83,6 +93,9 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     elevation: 4
   },
+  uploadCnt :{
+    marginVertical: 10
+  }
 })
 
 export default styles;

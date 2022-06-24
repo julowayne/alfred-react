@@ -9,6 +9,8 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     flexDirection: 'row',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   title :{
     fontSize: 20,
@@ -45,11 +47,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 6,
   },
-  image: {
-    // width: 50,
-    // height: 50,
-    // marginRight: 10,
-  },
   name: {
     fontSize: 16,
     marginTop: 5,
@@ -63,7 +60,6 @@ const styles = StyleSheet.create({
   },
   agencyCnt: {
     flexDirection: 'row',
-    // justifyContent: 'center'
   },
   redirection :{
     elevation: 20
@@ -72,7 +68,6 @@ const styles = StyleSheet.create({
   cardCntStyle :{
     marginTop: 15,
     borderRadius: 10,
-    width: width - 80
   },
   cardBadge : {
     alignItems: 'flex-end',
@@ -92,10 +87,16 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: 'Roboto-Bold'
   },
-  lottie: {
-    width: 100,
-    height: 100
-  }
+  //swiper
+  wrapper: {},
+  // slide1: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
+  // slide2: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // }
 })
 
   export default styles;

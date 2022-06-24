@@ -31,7 +31,8 @@ class AddFiles extends React.Component {
       result: null,
       modalVisible: false,
       selected: '',
-      selectedId: ''
+      selectedId: '',
+      fieldIdVal: ''
     }
   }
 
@@ -48,18 +49,21 @@ class AddFiles extends React.Component {
 
   uploadFilesToDB = async (file, fieldId) => {
     console.log(file)
+    console.log(fieldId)
+
+    if(fieldId != 0) this.state.fieldIdVal = fieldId
     
-    const response = await api.uploadFiles(file, fieldId)
+    const response = await api.uploadFiles(file, this.state.fieldIdVal)
     console.log('response:', JSON.stringify(response))
     this.setModalVisible(false);
     if(response.status === 200) {
       showMessage({
-        message: "Votre fichié a bien été ajouté",
+        message: "Votre fichier a bien été ajouté",
         type: "success",
         duration: 3000,
         icon: "success",
       });
-    } else if(response.status === 422){
+    } else {
       showMessage({
         message: "Il y a eu un problème lors du téléchargement",
         type: "danger",
@@ -113,40 +117,44 @@ class AddFiles extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.centeredView}>
-            <Modal
-              animationType="fade"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                this.setModalVisible(!modalVisible);
-              }}
-            >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                <View style={styles.notifTitle}>
-                  <Text style={styles.modalTitle}>Choisis ton fichier </Text>
-                  <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
-                    <Image source={require('../../../assets/close.png')}/>
-                  </TouchableOpacity>
-                </View>
-                  <View style={styles.allNotif}>
-                  <Text>Ton Fichier: { this.state.result ? this.state.result.name : '' }</Text>
+          <Modal
+            animationType="fade"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              this.setModalVisible(!modalVisible);
+            }}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+              <View style={styles.notifTitle}>
+                <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
+                  <Image source={require('../../../assets/close.png')}/>
+                </TouchableOpacity>
+              </View>
+                <Text style={styles.yourFile}><Image style={styles.pdf} source={require('../../../assets/pdf.png')}/>{ this.state.result ? this.state.result.name : '' }</Text>
+                <View style={styles.allNotif}>
+                  <View style={styles.pickerCnt}>
                     <Picker style={styles.picker}
                       selectedValue={this.state.selected}
-                      onValueChange={(value, index) => this.setState({selected: value, selectedId: index})}
+                      onValueChange={(value, index) => this.setState({selected: value, selectedId: index + 1})}
                       > 
+                      <Picker.Item label='Choisis un type de fichier' value='0' />
                       {this.props.fields.map((item, index) => {
                           return (<Picker.Item label={item.name} value={item.id} key={index}/>) 
                       })}
                     </Picker>
-                    <TouchableOpacity style={styles.upload} onPress={() => {this.uploadFilesToDB(this.state.result)}}>
-                        <Text style={styles.uploadText}>Envoyer</Text>
+                  </View>
+                  <View style={styles.uploadCnt}>
+                    <TouchableOpacity style={styles.upload} onPress={() => {this.uploadFilesToDB(this.state.result, this.state.selectedId)}}>
+                        <Text style={styles.uploadText}>Télécharger</Text>
                     </TouchableOpacity>
                   </View>
                 </View>
               </View>
-            </Modal>
-          </View>
+            </View>
+          </Modal>
+        </View>
       </View>
     );
   }

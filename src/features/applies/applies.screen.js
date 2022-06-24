@@ -6,6 +6,7 @@ import {
   Button
 } from 'react-native';
 import { Card, Icon, Badge } from '@rneui/themed';
+import Swiper from 'react-native-swiper'
 import AnimatedLoader from "react-native-animated-loader";
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import styles from './applies.styles'
@@ -16,13 +17,8 @@ class Applies extends React.Component {
     super(props)
     this.state = { visible: false };
   }
-  // componentDidMount() {
-  //   setTimeout(() => {
-  //     this.setState({
-  //       visible: !this.state.visible
-  //     });
-  //     }, 2000);
-  // }
+
+
 
   render(){
     const { visible } = this.state;
@@ -30,16 +26,7 @@ class Applies extends React.Component {
       <View>
         <HeaderNavigation headerTitle="Dossiers" navigation={this.props.navigation}/>
         <View style={styles.container}>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {/* <AnimatedLoader
-          visible={this.state.visible}
-          overlayColor="rgba(255,255,255,0.75)"
-          source={require("../../assets/loader.json")}
-          animationStyle={styles.lottie}
-          speed={1}
-        >
-          <Text>Doing something...</Text>
-        </AnimatedLoader> */}
+          <Swiper style={styles.wrapper} showsButtons={false} showsPagination={true}>
             <Card containerStyle={styles.cardCntStyle}>
               <Card.Image source={require('../../assets/lynn-vdbr-9KSoHS5_xiM-unsplash.jpg')}/>
               <View style={styles.cardBadge}>
@@ -91,7 +78,6 @@ class Applies extends React.Component {
             <Card containerStyle={styles.cardCntStyle}>
               <Card.Image source={require('../../assets/lynn-vdbr-9KSoHS5_xiM-unsplash.jpg')}/>
               <View style={styles.cardBadge}>
-                {/* Faire redescendre bgcolor & text de la DB */}
                 <View style={[styles.badge,{ backgroundColor: '#ffc107'}]}>
                   <Text style={styles.badgeText}>En traitement</Text>
                 </View>
@@ -118,7 +104,7 @@ class Applies extends React.Component {
                 </Text>
               </View>
               <View style={styles.cardPart}>
-                <Card containerStyle={{ marginTop: 15, borderRadius: 10}}>
+                <Card containerStyle={{ marginTop: 15, borderRadius: 10, flex: 1 }}>
                   <View style={styles.agencyCnt}>
                     <View>
                       <Icon size={50} name="md-home" type="ionicon"/>
@@ -134,9 +120,9 @@ class Applies extends React.Component {
                   </View>
                   <Button style={styles.redirection} title="Revoir l'annonce"/>
                 </Card>
-              </View>                  
+              </View>                       
             </Card>
-          </ScrollView>
+            </Swiper>
         </View>
       </View>
     );
