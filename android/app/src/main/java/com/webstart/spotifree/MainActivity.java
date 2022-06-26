@@ -3,6 +3,7 @@ package com.webstart.spotifree;
 import com.facebook.react.ReactActivity;
 import android.os.Bundle; // here
 import org.devio.rn.splashscreen.SplashScreen; // here
+import com.rnfs.RNFSPackage;
 
 
 public class MainActivity extends ReactActivity {
@@ -11,6 +12,7 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this);  // here
         super.onCreate(savedInstanceState);
+        
     }
 
   /**

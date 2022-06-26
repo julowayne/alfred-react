@@ -12,6 +12,7 @@ import {setLogging, setUser } from '../onboarding/landing/landing.redux';
 class Profil extends React.Component {
   constructor(props){
     super(props)
+    console.log(props.files)
   }
 
   logout = () => {
@@ -46,7 +47,8 @@ class Profil extends React.Component {
 const mapStateToProps = state => {
   return {
     logging: state.landing.logging,
-    user: state.landing.user
+    user: state.landing.user,
+    files: state.landing.files
   }
 }
 

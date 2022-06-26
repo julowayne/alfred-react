@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 class Landing extends React.Component {
   constructor(props){
     super(props)
-    console.log(props.openedFirst)
+    // console.log(props.openedFirst)
     if(props.openedFirst === true){
       props.navigation.navigate('appNavigator')
     }
@@ -21,7 +21,6 @@ class Landing extends React.Component {
     await AsyncStorage.setItem('hasOnBoarded', JSON.stringify({
       hasOnBoarded: true
     }));
-    console.log('Onboarding fx')
 
     this.props.navigation.navigate('signupNames');
   }

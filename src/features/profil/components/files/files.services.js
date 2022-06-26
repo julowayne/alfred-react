@@ -1,4 +1,9 @@
 import apisauce from 'apisauce'
+import {connect} from 'react-redux';
+// import store from '../../../../core/app.store';
+
+// const state = store.getState();
+// const authToken = state.user.token;
 
 const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
   const api = apisauce.create({
@@ -6,27 +11,24 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
       headers:{
           // 'Cache-Control': 'no-cache',
           'Accept': 'application/json',
-          // 'Authorization' : 'Bearer 19|wYusCMVKayyHjo0VHqEue5h9PtrjbpsOD965clF1'
-          'Authorization' : 'Bearer 32|QiwPjkNT6g0pGJRhMnlt7JKY8DPNjF6CiEaDaZDF'
+          'Authorization' : 'Bearer 32|QiwPjkNT6g0pGJRhMnlt7JKY8DPNjF6CiEaDaZDF',
       },
       timeout: 3000
   })
-
-  const fields = () => {
-    return api.get('fields', {
-      onUploadProgress: (e) => {
-        const progress = e.loaded / e.total
-      }
-    })
-  }
 
   const getFiles = () => {
     return api.get('files')
   }
 
-  return {fields, getFiles}
+  const deleteFile = (id) => {
+    console.log(id)
+    return api.delete('files/'+ id)
+  }
+
+  return {getFiles, deleteFile}
 
 }
+
 
 export default {
     create

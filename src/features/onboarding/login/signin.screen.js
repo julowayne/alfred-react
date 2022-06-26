@@ -45,6 +45,7 @@ class SignIn extends React.Component{
 			console.log('logging  ' + this.state.user.email + '   ' + this.state.user.password);
 			const response = await api.logging(this.state.user.email, this.state.user.password)
 			console.log('response:', JSON.stringify(response))
+			this.props.setUser(response.data)
 			this.goToHome()		
 		}
 

@@ -1,18 +1,15 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View } from 'react-native';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import { Card } from '@rneui/themed';
 import styles from './home.styles'
 import {connect} from 'react-redux';
-import {setLogging, setFields } from '../onboarding/landing/landing.redux'
+import {setLogging, setFields, setFiles } from '../onboarding/landing/landing.redux'
 
 import addFilesServices from './home.services'
 import Agencies from './components/agencies.screen';
 
-
 const api = addFilesServices.create();
-
-
 
 class Home extends React.Component {
   constructor(props){
@@ -26,12 +23,16 @@ class Home extends React.Component {
   }
   componentDidMount(){
     this.getFileTypes()
+    this.getFiles()
   }
 
   getFileTypes = async () => {
     const response = await api.fields()
-    console.log('response:', JSON.stringify(response))
     this.props.setFields(response.data.data)
+  }
+  getFiles = async () => {
+    const response = await api.getFiles()
+    this.props.setFiles(response.data.data)
   }
 
   logout = () => {
@@ -40,8 +41,7 @@ class Home extends React.Component {
   }
 
   goToApplies = () => {
-    // this.props.navigation.navigate('authNavigator')
-    // Redirect to applies
+    this.props.navigation.navigate('Mes dossiers')
   }
 
   render(){
@@ -50,7 +50,7 @@ class Home extends React.Component {
         <HeaderNavigation headerTitle="Accueil" navigation={this.props.navigation}/>
         <View style={styles.main}>
           <Text style={styles.hello}>
-            Bonjour Jules !
+            Bonjour {this.props.user.first_name} 👋
           </Text>
           <Card containerStyle={styles.followAppliesCnt}>
             <Text style={styles.followAppliesText}>
@@ -58,9 +58,6 @@ class Home extends React.Component {
             </Text>               
           </Card>
           <Agencies/>
-          {/* <TouchableOpacity onPress={() => this.setModalVisible(!modalVisible)}>
-            <Button title="deconnection" onPress={this.logout}/>
-          </TouchableOpacity> */}
         </View>
       </View>
     );
@@ -71,13 +68,15 @@ const mapStateToProps = state => {
   return {
     logging: state.landing.logging,
     fields: state.landing.fields,
-    user: state.landing.user
+    user: state.landing.user,
+    files: state.landing.files
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     setLogging: (loggin) => dispatch(setLogging(loggin)),
-    setFields: (fields) => dispatch(setFields(fields))
+    setFields: (fields) => dispatch(setFields(fields)),
+    setFiles: (files) => dispatch(setFiles(files))
   };
 };
 

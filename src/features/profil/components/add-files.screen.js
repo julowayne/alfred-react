@@ -4,19 +4,21 @@ import styles from './add-files.styles'
 import ImagePicker from 'react-native-image-crop-picker';
 import {connect} from 'react-redux';
 import {Picker} from '@react-native-picker/picker';
-import { showMessage, hideMessage } from "react-native-flash-message";
-
+import { showMessage } from "react-native-flash-message";
 import DocumentPicker, {
-  DirectoryPickerResponse,
-  DocumentPickerResponse,
   isInProgress,
   types,
 } from 'react-native-document-picker'
 
 import addFilesServices from './add-files.services'
+import updateFileServices from '../../accueil/home.services'
+import {setLogging, setFields, setFiles } from '../../onboarding/landing/landing.redux'
+
+
 
 
 const api = addFilesServices.create();
+const api2 = updateFileServices.create();
 
 
 class AddFiles extends React.Component {
@@ -47,14 +49,15 @@ class AddFiles extends React.Component {
   }
 
 
-  uploadFilesToDB = async (file, fieldId) => {
+  uploadFilesToDB =  async (file, fieldId) => {
     console.log(file)
     console.log(fieldId)
 
     if(fieldId != 0) this.state.fieldIdVal = fieldId
-    
+
     const response = await api.uploadFiles(file, this.state.fieldIdVal)
-    console.log('response:', JSON.stringify(response))
+    console.log('response:', JSON.stringify(response.data))
+    console.log('response:', JSON.stringify(response.status))
     this.setModalVisible(false);
     if(response.status === 200) {
       showMessage({
@@ -63,6 +66,7 @@ class AddFiles extends React.Component {
         duration: 3000,
         icon: "success",
       });
+      this.updateFileList()
     } else {
       showMessage({
         message: "Il y a eu un problème lors du téléchargement",
@@ -71,6 +75,11 @@ class AddFiles extends React.Component {
         icon: "danger",
       });
     }
+  }
+
+  updateFileList = async () => {
+    const response = await api2.getFiles()
+    this.props.setFiles(response.data.data)
   }
 
   
@@ -95,6 +104,8 @@ class AddFiles extends React.Component {
       }).catch(this.handleError)
     }
   }
+
+  
   
   render(){
     const { modalVisible } = this.state;
@@ -168,7 +179,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setLogging: (loggin) => dispatch(setLogging(loggin)),
-    setFields: (fields) => dispatch(setFields(fields))
+    setFields: (fields) => dispatch(setFields(fields)),
+    setFiles: (files) => dispatch(setFiles(files))
   };
 };
 

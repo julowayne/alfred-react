@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#e9ecef',
   },
   hello: {
-    // fontFamily: 'Roboto-BoldItalic',
     fontFamily: 'Roboto-Medium',
     fontSize: 25,
     color: 'black',

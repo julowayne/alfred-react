@@ -6,11 +6,12 @@ const styles = StyleSheet.create({
   fonctions: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10,
+    paddingHorizontal: 15,
     borderBottomWidth: 1,
   },
   add :{
     fontSize: 20,
+    fontFamily: 'Roboto-Medium',
     color: 'black'
   },
   addFile: {
