@@ -10,7 +10,6 @@ import {setLogging, setUser } from '../../onboarding/landing/landing.redux';
 class MyProfile extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
   }
 
   profilSettings = () => {

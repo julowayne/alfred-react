@@ -2,13 +2,16 @@ import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
 import styles from './signup-names.styles';
 import {validateEmail} from './signup.helper'
+import {connect} from 'react-redux';
+import {setUser } from '../../onboarding/landing/landing.redux'
 
 
 class SignupEmail extends React.Component{
 	constructor(props){
 		super(props)
+
 		this.state = {
-			email: 'thomas.desessarts-jules@hotmail.com'
+			email: ''
 		}
 	}
 
@@ -21,21 +24,7 @@ class SignupEmail extends React.Component{
 
 
 	checkEmail = () => {
-		if(validateEmail(this.state.email)){
-			this.props.navigation.navigate('signupPassword');
-		}else {
-			console.log('else');
-			console.log(this.state.email);
-		}
-
-		// console.log(this.state.email)
-		// if(this.state.email === ""){
-		// 	Alert.alert("La champ email est obligatoire !"); 
-		// } else if (!validateEmail(email)){
-		// 	Alert.alert("Le format n'est pas le bon!");
-		// }else {
-		// 	this.props.navigation.navigate('signupStatus');
-		// }
+		this.props.navigation.navigate('signupPassword', {first_name : this.props.route.params.first_name, last_name: this.props.route.params.last_name, status_id: this.props.route.params.status_id, email: this.state.email,});
 	}
 
 	render(){
@@ -65,4 +54,11 @@ class SignupEmail extends React.Component{
 	}
 }
 
-export default SignupEmail;
+const mapDispatchToProps = dispatch => {
+  return {
+    setLogging: (logging) => dispatch(setLogging(logging)),
+    setUser: (user) => dispatch(setUser(user))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignupEmail)

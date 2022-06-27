@@ -5,7 +5,13 @@ const initialState = {
 
     openedFirst : false, // onboarding (TO FALSE)
     logging : false, // sign-in / sign-up (TO FALSE)
-    user : {},
+    user : {
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        status_id: "",
+    },
     fields: [],
     files : {
         id: null,
@@ -13,6 +19,7 @@ const initialState = {
         fieldId: null,
         guarantorId: null
     },
+    status: []
 }
 
 export const landingSlice = createSlice({
@@ -34,10 +41,13 @@ export const landingSlice = createSlice({
         setFiles : (state, action) => {
             state.files = action.payload
         },
+        setStatus : (state, action) => {
+            state.status = action.payload
+        },
     }
 })
 
-export const {setOpenFirst, setLogging, setUser, setFields, setFiles} = landingSlice.actions
+export const {setOpenFirst, setLogging, setUser, setFields, setFiles, setStatus} = landingSlice.actions
 export const selectSelf = state => state[landingSlice.name]
 
 
@@ -47,5 +57,6 @@ export const selectLogging = createSelector(selectSelf, state => state.logging)
 export const selectUser = createSelector(selectSelf, state => state.user)
 export const selectFields = createSelector(selectSelf, state => state.fields)
 export const selectFiles = createSelector(selectSelf, state => state.files)
+export const selectStatus = createSelector(selectSelf, state => state.status)
 
 export default landingSlice.reducer

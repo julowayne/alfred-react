@@ -34,7 +34,7 @@ class AddFiles extends React.Component {
       modalVisible: false,
       selected: '',
       selectedId: '',
-      fieldIdVal: ''
+      fieldIdVal: '',
     }
   }
 
@@ -55,10 +55,17 @@ class AddFiles extends React.Component {
 
     if(fieldId != 0) this.state.fieldIdVal = fieldId
 
-    const response = await api.uploadFiles(file, this.state.fieldIdVal)
-    console.log('response:', JSON.stringify(response.data))
-    console.log('response:', JSON.stringify(response.status))
+    if(this.props.guarantor === true){
+      const response = await api.uploadFiles(this.props.guarantor.id, this.props.user.token, file, this.state.fieldIdVal)
+    } else {
+      const response = await api.uploadFiles(this.props.user.token, file, this.state.fieldIdVal)
+    }
+
+    // console.log('response:', JSON.stringify(response.data))
+    // console.log('response:', JSON.stringify(response.status))
+
     this.setModalVisible(false);
+
     if(response.status === 200) {
       showMessage({
         message: "Votre fichier a bien été ajouté",
@@ -89,7 +96,6 @@ class AddFiles extends React.Component {
 
   importFile = async (source) => {
     if(source === 'camera'){
-      console.log('camera')
       ImagePicker.openCamera({
         width: 300,
         height: 400,
@@ -173,7 +179,8 @@ class AddFiles extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    fields: state.landing.fields
+    fields: state.landing.fields,
+    user: state.landing.user
   }
 }
 const mapDispatchToProps = dispatch => {

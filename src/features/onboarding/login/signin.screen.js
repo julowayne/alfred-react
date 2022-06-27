@@ -18,8 +18,6 @@ class SignIn extends React.Component{
 					password: ''
 				}
 			}
-
-			console.log('signin logging : ' + props.logging)
 			if(props.logging === true){
 				props.navigation.navigate('appNavigator')
 			}
@@ -42,9 +40,7 @@ class SignIn extends React.Component{
 		}
 
 		loggin = async () => {
-			console.log('logging  ' + this.state.user.email + '   ' + this.state.user.password);
 			const response = await api.logging(this.state.user.email, this.state.user.password)
-			console.log('response:', JSON.stringify(response))
 			this.props.setUser(response.data)
 			this.goToHome()		
 		}

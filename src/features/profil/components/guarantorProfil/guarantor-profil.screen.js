@@ -1,21 +1,19 @@
 import React from 'react';
 import { KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard , View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-import styles from './edit-profil.styles';
+import styles from './guarantor-profil.styles';
 import {connect} from 'react-redux';
 import {setLogging, setUser } from '../../../onboarding/landing/landing.redux';
 import {Picker} from '@react-native-picker/picker';
 import { showMessage } from "react-native-flash-message";
-import editProfilServices from './edit-profil.services';
+import editProfilServices from './guarantor-profil.serviceservices';
 
 
 const api = editProfilServices.create()
 
 
-class EditProfil extends React.Component {
+class EditGuarantorProfil extends React.Component {
   constructor(props){
     super(props)
-
     this.state = {
       guarantorChecked : false,
       first_name: this.props.user.first_name,
@@ -44,8 +42,7 @@ class EditProfil extends React.Component {
       updateProfil.status_id = this.state.status_id
     }
 
-
-    let response = await api.updateProfil(this.props.user.token, updateProfil, this.props.user.id)
+    let response = await api.updateGuarantor(this.props.user.token, updateProfil, this.props.user.id)
 
 
     if(response.status === 200) {
@@ -78,7 +75,7 @@ class EditProfil extends React.Component {
             <TextInput placeholder="Thomas Desessarts" style={styles.input} defaultValue={this.props.user.last_name} onChangeText={(last_name) => this.setState({last_name : last_name})} />
             <Text style={styles.label}>Prénom</Text>
             <TextInput placeholder="Jules" style={styles.input} defaultValue={this.props.user.first_name}  onChangeText={(first_name) => this.setState({first_name : first_name})} />
-            <Text style={styles.label}>Email</Text>
+            {/* <Text style={styles.label}>Email</Text>
             <TextInput placeholder="jules@gmail.com" style={styles.input} defaultValue={this.props.user.email}   onChangeText={(email) => this.setState({email : email})}/>
             <Text style={styles.label}>Status</Text>
             <Picker style={styles.picker}
@@ -88,7 +85,7 @@ class EditProfil extends React.Component {
               {this.props.status.map((item, index) => {
                   return (<Picker.Item label={item.name} value={item.id} key={index}/>) 
               })}
-            </Picker>
+            </Picker> */}
             <TouchableOpacity style={styles.profilButton} onPress={this.updateUSer} >
               <Text style={styles.profilText}>Enregistrer</Text>
             </TouchableOpacity>
@@ -114,5 +111,5 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditProfil)
+export default connect(mapStateToProps, mapDispatchToProps)(EditGuarantorProfil)
 

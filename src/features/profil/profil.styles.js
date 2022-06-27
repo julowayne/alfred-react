@@ -5,24 +5,25 @@ const {width, height} = Dimensions.get('window')
 const styles = StyleSheet.create({
   main:{
     height: height,
-    width: width,
     backgroundColor: '#e9ecef',
-    padding: 15
   },
   logout: {
     marginTop: 10,
-    padding: 15
+    padding: 15,
+    width: '100%',
+    position: 'absolute',
+    bottom: 50, 
   },
   logoutButton :{
-    height: 70,
+    height: 55,
     borderRadius: 6,
-    backgroundColor: 'white',
+    backgroundColor: '#007bff',
     justifyContent: 'center',
     alignItems: 'center',
     elevation: 4
   },
   logoutText: {
-    color: '#007bff',
+    color: 'white',
     fontFamily: 'Roboto-Medium',
     fontSize: 20
   }

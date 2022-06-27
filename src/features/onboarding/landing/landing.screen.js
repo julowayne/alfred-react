@@ -5,22 +5,28 @@ import styles from './landing.styles'
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AsyncStorage } from '@aws-amplify/core';
 import {connect} from 'react-redux';
+import {setStatus } from '../../onboarding/landing/landing.redux'
+
+import statusServices from './landing.services'
+
+const api = statusServices.create()
 
 
 class Landing extends React.Component {
   constructor(props){
     super(props)
-    // console.log(props.openedFirst)
     if(props.openedFirst === true){
       props.navigation.navigate('appNavigator')
     }
   }
 
+  async componentDidMount(){
+    const response = await api.getStatus()
+    this.props.setStatus(response.data.data)
+  }
+
 
   onBoardingCompleted = async () => {
-    await AsyncStorage.setItem('hasOnBoarded', JSON.stringify({
-      hasOnBoarded: true
-    }));
 
     this.props.navigation.navigate('signupNames');
   }
@@ -65,8 +71,14 @@ class Landing extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    openedFirst : state.landing.openedFirst
+    openedFirst: state.landing.openedFirst,
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    setStatus: (status) => dispatch(setStatus(status))
+  };
+};
 
-export default connect(mapStateToProps, null)(Landing)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Landing)

@@ -20,7 +20,6 @@ class Files extends React.Component {
   constructor(props){
     super(props)
     this.myRef = React.createRef();
-    console.log(props.files)
     this.state = {
       selectedFile : ''
     }
@@ -54,7 +53,6 @@ class Files extends React.Component {
 
   deleteFile = async () => {
     const response = await api.deleteFile(this.state.selectedFile)
-    console.log('response:', JSON.stringify(response.data))
     if(response.status === 204) {
       showMessage({
         message: "Votre fichier a bien été supprimé !",
@@ -132,11 +130,7 @@ renderItem = ({ item }) => (
           <View>
             <Card containerStyle={styles.messageCard}>
               <Text style={styles.emptyMessage1}>
-                Toujours pas de fichier dans votre dossier 😱 ? {"\n"}
-                Commencez dès maintenant en allant les rechercher directement <Text style={styles.getFileFromDirectory}>dans votre téléphone 📁</Text>
-              </Text>
-              <Text style={styles.emptyMessage2}>
-                Ou <Text style={styles.getFileFromCamera}>prenez les en photo 📷</Text> qui seront transformés en pdf
+                Ajoutes ton premier fichier a l'aide des actions au dessus !
               </Text>
             </Card>
           </View>

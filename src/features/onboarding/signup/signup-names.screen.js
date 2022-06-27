@@ -2,14 +2,14 @@ import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
 import styles from './signup-names.styles';
 import {connect} from 'react-redux';
-import {setOpenFirst } from '../landing/landing.redux'
+import {setOpenFirst, setUser } from '../landing/landing.redux'
 
 class SignupNames extends React.Component{
 		constructor(props){
 			super(props)
 			this.state = {
-				firstname: "Jules",
-				lastname: "Thomas",
+				first_name: "",
+				last_name: "",
 			}
 		}
 
@@ -17,21 +17,21 @@ class SignupNames extends React.Component{
 			this.props.setOpenFirst(true)
 		}
 
-		onChangeFirstname = (firstname) => {
+		onChangeFirstname = (first_name) => {
 			this.setState({
-				firstname
+				first_name
 			})
 		}
 
-		onChangeLastname = (lastname) => {
+		onChangeLastname = (last_name) => {
 			this.setState({
-				lastname
+				last_name
 			})
 		}
 
 		checkInputs = () => {
-			if(this.state.firstname != "" || this.state.lastname != ""){
-				this.props.navigation.navigate('signupStatus');
+			if(this.state.first_name != "" || this.state.last_name != ""){
+				this.props.navigation.navigate('signupStatus', {first_name : this.state.first_name, last_name: this.state.last_name});
 			} else {
 				Alert.alert("Les 2 champs doivent être remplis !");
 			}
@@ -50,13 +50,13 @@ class SignupNames extends React.Component{
 						</View>
 						<View style={styles.inner}>
 							<Text style={styles.label}>
-              	Nom
+							Prénom
             	</Text>
-							<TextInput placeholder="Thomas Desessarts" style={styles.input}  onChangeText={firstname => this.onChangeFirstname(firstname)} />
+							<TextInput placeholder="Jules" style={styles.input}  onChangeText={firstname => this.onChangeFirstname(firstname)} />
 							<Text style={styles.label}>
-								Prénom
+								Nom
 							</Text>
-							<TextInput placeholder="Jules" style={styles.input} onChangeText={lastname => this.onChangeLastname(lastname)} />
+							<TextInput placeholder="Thomas Desessarts" style={styles.input} onChangeText={lastname => this.onChangeLastname(lastname)} />
 							<View style={styles.btnContainer}>
 								<Button title="Suivant" onPress={this.checkInputs} />
 							</View>
@@ -68,14 +68,13 @@ class SignupNames extends React.Component{
     }
 }
 
-const mapStateToProps = state => {
-  return {}
-}
+
 
 const mapDispatchToProps = dispatch => {
   return {
-    setOpenFirst: (openedFirst) => dispatch(setOpenFirst(openedFirst))
+    setOpenFirst: (openedFirst) => dispatch(setOpenFirst(openedFirst)),
+    setUser: (user) => dispatch(setUser(user)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupNames)
+export default connect(null, mapDispatchToProps)(SignupNames)

@@ -4,8 +4,9 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container :{
-    marginTop: 15,
-    padding: 15
+    paddingHorizontal: 15,
+    paddingBottom: 10,
+    paddingTop: 40
   },
   filesButton :{
     height: 70,

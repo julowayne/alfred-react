@@ -3,21 +3,18 @@ import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithout
 import styles from './signup-password.styles';
 import {validatePassword} from './signup.helper'
 import {connect} from 'react-redux';
-import {setLogging } from '../../onboarding/landing/landing.redux'
+import signupServices from '../signup/signup.services';
+import {setLogging, setUser, setOpenFirst } from '../../onboarding/landing/landing.redux'
 
 
 
-
+const api = signupServices.create();
 class SignupPassword extends React.Component{
 		constructor(props){
 			super(props)
 			this.state = {
         password: ''
 			}
-		}
-
-		componentDidMount(){
-			this.props.setLogging(true)
 		}
 
 		onChangePassword = (password) => {
@@ -27,7 +24,18 @@ class SignupPassword extends React.Component{
 		}
 
 		checkPassword = () => {
-			this.props.navigation.navigate('appNavigator');
+			const user = {first_name : this.props.route.params.first_name, last_name: this.props.route.params.last_name, status_id: this.props.route.params.status_id, email: this.props.route.params.email, password: this.state.password}
+			this.registerUser(user)
+		}
+
+		registerUser = async (user) => {
+			const response = await api.register(user)
+			if (response.status === 201){
+				this.props.setUser(response.data)
+				this.props.setLogging(true)
+				this.props.setOpenFirst(true)
+				this.props.navigation.navigate('appNavigator');
+			}
 		}
 
     render(){
@@ -57,12 +65,15 @@ class SignupPassword extends React.Component{
 
 const mapStateToProps = state => {
   return {
-    // openedFirst : state.landing.openedFirst
+    user: state.landing.user
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
-    setLogging: (logging) => dispatch(setLogging(logging))
+    setLogging: (logging) => dispatch(setLogging(logging)),
+    setOpenFirst: (openedFirst) => dispatch(setOpenFirst(openedFirst)),
+		setUser: (user) => dispatch(setUser(user))
   };
 };
 

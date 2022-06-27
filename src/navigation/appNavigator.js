@@ -7,6 +7,7 @@ import Profil from "../features/profil/profil.screen";
 import Files from "../features/profil/components/files/files.screen";
 import editProfil from "../features/profil/components/profil/edit-profil.screen";
 import Notification from "../features/notifications/notification.screen";
+import guarantorScreen from "../features/profil/components/guarantorProfil/guarantor-profil.screen.screen";
 const Stack = createNativeStackNavigator();
 
 const appNavigator = () => {
@@ -19,6 +20,7 @@ const appNavigator = () => {
         <Stack.Screen name="home" component={Home} />
         <Stack.Group screenOptions={{ headerStyle: { backgroundColor: '#20c997' } }} >
           <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mettre à jour mon profil" component={editProfil} />
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mettre à jour mon garant" component={guarantorScreen} />
           <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mes fichiers" component={Files} />
           <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Notifications" component={Notification} />
         </Stack.Group>

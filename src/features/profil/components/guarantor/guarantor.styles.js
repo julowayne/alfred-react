@@ -7,27 +7,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 10
   },
-  title :{
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    marginLeft: 20,
-    fontFamily: 'Roboto-Regular',
-    marginBottom: -10
-  },
-  label:{
-    marginBottom: 4
-  },
-  input: {
-    fontFamily: 'Roboto-Regular',
-    height: 40,
-    marginBottom: 15,
-    borderWidth: 1,
-    borderRadius: 4,
-    padding: 10,
-    borderColor: '#20c997',
-  },
-  profilButton :{
+  filesButton :{
     height: 70,
     borderRadius: 6,
     backgroundColor: 'white',
@@ -35,7 +15,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 4
   },
-  profilText: {
+  filesText: {
     color: '#007bff',
     fontFamily: 'Roboto-Medium',
     fontSize: 20

@@ -27,11 +27,15 @@ class Home extends React.Component {
   }
 
   getFileTypes = async () => {
-    const response = await api.fields()
+    const response = await api.fields(this.props.user.token)
+    // const response = await api.fields()
+    console.log(response.data)
     this.props.setFields(response.data.data)
   }
   getFiles = async () => {
-    const response = await api.getFiles()
+    const response = await api.getFiles(this.props.user.token)
+    // const response = await api.getFiles()
+    console.log(response.data)
     this.props.setFiles(response.data.data)
   }
 
@@ -66,6 +70,8 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    
+    openedFirst: state.landing.openedFirst,
     logging: state.landing.logging,
     fields: state.landing.fields,
     user: state.landing.user,

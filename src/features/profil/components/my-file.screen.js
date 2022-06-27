@@ -17,7 +17,7 @@ render(){
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.filesButton} onPress={this.openFileModal}>
-        <Text style={styles.filesText}>Mes dossiers</Text>
+        <Text style={styles.filesText}>Mon dossier</Text>
       </TouchableOpacity>
     </View>
   );

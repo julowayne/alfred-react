@@ -6,22 +6,15 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
       timeout: 3000
   })
 
-  const fields = (token) => {
-    return api.get('fields', {},{ headers:{
-      'Accept': 'application/json',
-      'Authorization' : 'Bearer ' + token
-    }})
-  }
+  const updateGuarantor = (token, update, id) => {
 
-
-  const getFiles = (token) => {
-    return api.get('files', {}, { headers:{
+    return api.put('/guarantors/' + id, update , {headers:{
       'Accept': 'application/json',
       'Authorization' : 'Bearer ' + token,
-    }})
+  }})
   }
 
-  return {fields, getFiles}
+  return {updateGuarantor}
 
 }
 
