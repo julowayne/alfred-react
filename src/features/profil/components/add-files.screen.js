@@ -1,18 +1,15 @@
 import React from 'react';
-import { Text, View, Image, TouchableOpacity, Modal, Button} from 'react-native';
+import { Text, View, Image, TouchableOpacity, Modal} from 'react-native';
 import styles from './add-files.styles'
 import ImagePicker from 'react-native-image-crop-picker';
 import {connect} from 'react-redux';
 import {Picker} from '@react-native-picker/picker';
 import { showMessage } from "react-native-flash-message";
-import DocumentPicker, {
-  isInProgress,
-  types,
-} from 'react-native-document-picker'
+import DocumentPicker, { isInProgress, types } from 'react-native-document-picker'
 
 import addFilesServices from './add-files.services'
 import updateFileServices from '../../accueil/home.services'
-import {setLogging, setFields, setFiles } from '../../onboarding/landing/landing.redux'
+import {setLogging, setFields, setFiles, setGuarantorFiles, setAddFileLoading, setNotifications } from '../../onboarding/landing/landing.redux'
 
 
 
@@ -24,7 +21,7 @@ const api2 = updateFileServices.create();
 class AddFiles extends React.Component {
   constructor(props){
     super(props)
-    console.log(props.fields)
+    console.log(props)
     this.state = {
       source: [
         'camera',
@@ -35,6 +32,7 @@ class AddFiles extends React.Component {
       selected: '',
       selectedId: '',
       fieldIdVal: '',
+      loading: false
     }
   }
 
@@ -48,48 +46,74 @@ class AddFiles extends React.Component {
     }
   }
 
-
   uploadFilesToDB =  async (file, fieldId) => {
     console.log(file)
     console.log(fieldId)
+    console.log(this.props.guarantorBool)
 
     if(fieldId != 0) this.state.fieldIdVal = fieldId
 
-    if(this.props.guarantor === true){
-      const response = await api.uploadFiles(this.props.guarantor.id, this.props.user.token, file, this.state.fieldIdVal)
+    if(this.props.guarantorBool) {
+      const response = await api.uploadFiles(this.props.user.token, file, this.state.fieldIdVal, this.props.guarantor.id)
+      console.log('response:', JSON.stringify(response.data))
+      console.log('response:', JSON.stringify(response.status))
+      this.showMessage(response)
+
     } else {
-      const response = await api.uploadFiles(this.props.user.token, file, this.state.fieldIdVal)
+
+      const response = await api.uploadFiles(this.props.user.token, file, this.state.fieldIdVal, null)
+      console.log('response:', JSON.stringify(response.data))
+      console.log('response:', JSON.stringify(response.status))
+      this.showMessage(response)
+
     }
-
-    // console.log('response:', JSON.stringify(response.data))
-    // console.log('response:', JSON.stringify(response.status))
-
     this.setModalVisible(false);
-
-    if(response.status === 200) {
-      showMessage({
-        message: "Votre fichier a bien été ajouté",
-        type: "success",
-        duration: 3000,
-        icon: "success",
-      });
-      this.updateFileList()
-    } else {
-      showMessage({
-        message: "Il y a eu un problème lors du téléchargement",
-        type: "danger",
-        duration: 3000,
-        icon: "danger",
-      });
-    }
   }
+  
+  
+    showMessage = (response) => {
+      console.log(response)
+      if(response.status === 200) {
+        setTimeout(() => {
+          showMessage({
+            message: "Votre fichier a bien été ajouté !",
+            type: "success",
+            duration: 3000,
+            icon: "success",
+          });
+        }, 2200)
+        this.updateFileList()
+        this.props.setNotifications({message: "Votre fichier a bien été ajouté"})
+      } else {
+        setTimeout(() => {
+          showMessage({
+            message: "Il y a eu un problème lors du téléchargement de votre fichier",
+            type: "danger",
+            duration: 3000,
+            icon: "danger",
+          });
+        }, 2200)
+      }
+    }
 
   updateFileList = async () => {
-    const response = await api2.getFiles()
-    this.props.setFiles(response.data.data)
+
+    this.props.setAddFileLoading(true)
+
+    if(this.props.guarantorBool) {
+      const response = await api2.getGuarantorFiles(this.props.user.token)
+      console.log(response)
+      this.props.setGuarantorFiles(response.data.data)
+    } else {
+      const response = await api2.getFiles(this.props.user.token)
+      this.props.setFiles(response.data.data)
+    }
+
+    setTimeout(() => {
+      this.props.setAddFileLoading(false)
+    }, 2000)
   }
 
-  
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   }
@@ -154,7 +178,7 @@ class AddFiles extends React.Component {
                   <View style={styles.pickerCnt}>
                     <Picker style={styles.picker}
                       selectedValue={this.state.selected}
-                      onValueChange={(value, index) => this.setState({selected: value, selectedId: index + 1})}
+                      onValueChange={(value, index) => this.setState({selected: value, selectedId: index })}
                       > 
                       <Picker.Item label='Choisis un type de fichier' value='0' />
                       {this.props.fields.map((item, index) => {
@@ -180,14 +204,20 @@ class AddFiles extends React.Component {
 const mapStateToProps = state => {
   return {
     fields: state.landing.fields,
-    user: state.landing.user
+    user: state.landing.user,
+    guarantor: state.landing.guarantor,
+    guarantorFiles : state.landing.guarantorFiles,
+    addFileLoading: state.landing.addFileLoading
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
     setLogging: (loggin) => dispatch(setLogging(loggin)),
     setFields: (fields) => dispatch(setFields(fields)),
-    setFiles: (files) => dispatch(setFiles(files))
+    setFiles: (files) => dispatch(setFiles(files)),
+    setGuarantorFiles: (files) => dispatch(setGuarantorFiles(files)),
+    setAddFileLoading: (addFileLoading) => dispatch(setAddFileLoading(addFileLoading)),
+    setNotifications: (notifications) => dispatch(setNotifications(notifications)),
   };
 };
 

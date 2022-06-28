@@ -28,13 +28,11 @@ class Home extends React.Component {
 
   getFileTypes = async () => {
     const response = await api.fields(this.props.user.token)
-    // const response = await api.fields()
     console.log(response.data)
     this.props.setFields(response.data.data)
   }
   getFiles = async () => {
     const response = await api.getFiles(this.props.user.token)
-    // const response = await api.getFiles()
     console.log(response.data)
     this.props.setFiles(response.data.data)
   }
@@ -75,7 +73,9 @@ const mapStateToProps = state => {
     logging: state.landing.logging,
     fields: state.landing.fields,
     user: state.landing.user,
-    files: state.landing.files
+    files: state.landing.files,
+    guarantorFiles : state.landing.guarantorFiles,
+    notifications: state.landing.notifications
   }
 }
 const mapDispatchToProps = dispatch => {

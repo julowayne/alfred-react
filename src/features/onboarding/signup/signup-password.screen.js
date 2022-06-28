@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
+import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert,TouchableOpacity   } from 'react-native';
 import styles from './signup-password.styles';
 import {validatePassword} from './signup.helper'
 import {connect} from 'react-redux';
@@ -50,9 +50,14 @@ class SignupPassword extends React.Component{
 						<Text style={styles.header}>Inscription</Text>
 					</View>
 					<View style={styles.inner}>
+						<Text style={styles.label}>
+							Mot de passe
+						</Text>
 						<TextInput type="password" placeholder="Mot de passe" secureTextEntry={true} style={styles.input}  onChangeText={password => this.onChangePassword(password)} />
 						<View style={styles.btnContainer}>
-							<Button title="Suivant" onPress={this.checkPassword} />
+							<TouchableOpacity style={styles.nextBtn} onPress={this.checkPassword}>
+								<Text style={styles.nextText}>M'inscrire</Text>
+							</TouchableOpacity>
 						</View>
 					</View>
 				</View>

@@ -20,8 +20,14 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
       'Authorization' : 'Bearer ' + token,
     }})
   }
+  const getGuarantorFiles = (token) => {
+    return api.get('guarantors/files', {}, { headers:{
+      'Accept': 'application/json',
+      'Authorization' : 'Bearer ' + token,
+    }})
+  }
 
-  return {fields, getFiles}
+  return {fields, getFiles, getGuarantorFiles}
 
 }
 

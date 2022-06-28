@@ -55,6 +55,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto-Medium',
     fontSize: 20
   },
+  modalStyle: {
+    width: 0
+  },
+
   // style for content if no files
   messageCard : {
     borderRadius: 10,

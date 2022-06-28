@@ -15,13 +15,12 @@ import styles from './applies.styles'
 class Applies extends React.Component {
   constructor(props){
     super(props)
-    this.state = { visible: false };
   }
 
+  
 
 
   render(){
-    const { visible } = this.state;
     return (
       <View>
         <HeaderNavigation headerTitle="Dossiers" navigation={this.props.navigation}/>

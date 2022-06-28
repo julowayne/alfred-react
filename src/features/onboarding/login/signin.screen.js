@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Text, Image  } from 'react-native';
+import { View, KeyboardAvoidingView, TextInput, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Text, Image, Alert  } from 'react-native';
 import styles from './signin.styles';
 import {connect} from 'react-redux';
-import {setLogging, setUser } from '../landing/landing.redux';
+import {setLogging, setUser, setBtnLoader } from '../landing/landing.redux';
 import signinServices from './signin.services';
+import Lottieview from 'lottie-react-native';
+
 
 
 const api = signinServices.create();
@@ -40,9 +42,17 @@ class SignIn extends React.Component{
 		}
 
 		loggin = async () => {
-			const response = await api.logging(this.state.user.email, this.state.user.password)
-			this.props.setUser(response.data)
-			this.goToHome()		
+			if(this.state.user.email && this.state.user.password ) {
+				const response = await api.logging(this.state.user.email, this.state.user.password)
+				this.props.setUser(response.data)
+				setTimeout(() => {				
+					this.goToHome()		
+					this.props.setBtnLoader(false)
+				}, 1000);
+			} else {
+				Alert.alert('Vous devez remplir les 2 champs pour vous connecter')
+				this.props.setBtnLoader(false)
+			}
 		}
 
     render(){
@@ -70,8 +80,15 @@ class SignIn extends React.Component{
 								secureTextEntry={true}
 								style={styles.input}  
 							/>
-							<TouchableOpacity style={styles.profilButton} onPress={this.loggin} >
-								<Text style={styles.profilText}>Me connecter</Text>
+							<TouchableOpacity style={styles.profilButton} onPress={() => { this.props.setBtnLoader(true), this.loggin()}} >
+							{ !this.props.btnLoader ? <Text style={styles.profilText}>Me connecter</Text> : 
+								<Lottieview
+									source={require('../../../assets/animations/submit-btn.json')}
+									style={{ flex: 1}}
+									autoPlay
+									loop
+								/>
+								}
 							</TouchableOpacity>
 						</View>
 					</View>
@@ -80,15 +97,19 @@ class SignIn extends React.Component{
 			)
     }
 }
+
 const mapStateToProps = state => {
   return {
-    logging: state.landing.logging
+    logging: state.landing.logging,
+		btnLoader: state.landing.btnLoader
   }
 }
+
 const mapDispatchToProps = dispatch => {
   return {
     setLogging: (loggin) => dispatch(setLogging(loggin)),
-    setUser: (user) => dispatch(setUser(user))
+    setUser: (user) => dispatch(setUser(user)),
+    setBtnLoader: (btnLoader) => dispatch(setBtnLoader(btnLoader)),
   };
 };
 

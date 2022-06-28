@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
+import { View, KeyboardAvoidingView, TextInput, Text, Platform, TouchableWithoutFeedback, TouchableOpacity, Keyboard, Alert  } from 'react-native';
 import styles from './signup-names.styles';
 import {validateEmail} from './signup.helper'
 import {connect} from 'react-redux';
@@ -44,7 +44,9 @@ class SignupEmail extends React.Component{
 							</Text>
 						<TextInput placeholder="youradresse@example.com" style={styles.input}  onChangeText={email => this.onChangeEmail(email)} />
 						<View style={styles.btnContainer}>
-							<Button title="Suivant" onPress={this.checkEmail} />
+							<TouchableOpacity style={styles.nextBtn} onPress={this.checkEmail}>
+								<Text style={styles.nextText}>Suivant</Text>
+							</TouchableOpacity>
 						</View>
 					</View>
 				</View>

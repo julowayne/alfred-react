@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, FlatList } from "react-native";
 import styles from './notification.styles'
 import { ListItem, Avatar, Card } from '@rneui/themed';
+import {connect} from 'react-redux';
 
 class Notification extends React.Component {
   constructor(props){
@@ -54,4 +55,15 @@ renderItem = ({ item }) => (
   }
 }
 
-export default Notification;
+const mapStateToProps = state => {
+  return {
+    logging: state.landing.logging,
+    user: state.landing.user,
+    files: state.landing.files,
+    guarantor: state.landing.guarantor,
+    btnLoader: state.landing.btnLoader
+  }
+}
+
+
+export default connect(mapStateToProps, null)(Notification)

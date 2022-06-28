@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container :{
     paddingHorizontal: 15,
     paddingBottom: 10,
-    paddingTop: 40
+    paddingTop: 10
   },
   filesButton :{
     height: 70,

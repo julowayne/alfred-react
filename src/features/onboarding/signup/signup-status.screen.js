@@ -1,6 +1,6 @@
 import React from 'react';
 import {Picker} from '@react-native-picker/picker';
-import { View, KeyboardAvoidingView, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, Alert  } from 'react-native';
+import { View, KeyboardAvoidingView, Text, Platform, TouchableWithoutFeedback, Keyboard, Alert , TouchableOpacity } from 'react-native';
 import styles from './signup-status.styles';
 import {connect} from 'react-redux';
 import {setUser } from '../landing/landing.redux'
@@ -42,18 +42,21 @@ class SignuStatus extends React.Component{
 							<Text style={styles.header}>Inscription</Text>
 						</View>
 						<View style={styles.inner}>
+						<View style={styles.pickerCnt}>
 							<Picker style={styles.picker}
 								selectedValue={this.state.selected}
 								onValueChange={(value, index) => this.setState({selected: value, status_id: index})}
 								> 
-								<Picker.Item label='Choisis un type de fichier' value='0' />
+								{/* <Picker.Item label='Je suis un ...' value='0' /> */}
 								{this.props.status.map((item, index) => {
 										return (<Picker.Item label={item.name} value={item.id} key={index}/>) 
 								})}
 							</Picker>
-							<Text style={styles.me}>Je suis un: {this.state.selected}</Text>
+						</View>
 							<View style={styles.btnContainer}>
-								<Button title="Suivant" onPress={this.checkInputs} />
+								<TouchableOpacity style={styles.nextBtn} onPress={this.checkInputs}>
+									<Text style={styles.nextText}>Suivant</Text>
+								</TouchableOpacity>
 							</View>
 						</View>
 					</View>

@@ -42,16 +42,25 @@ const styles = StyleSheet.create({
   },
   input: {
     fontFamily: 'Roboto-Regular',
-    height: 40,
+    height: 50,
     marginBottom: 15,
-    borderWidth: 1,
+    backgroundColor: 'white',
     borderRadius: 4,
     padding: 10,
-    borderColor: '#20c997',
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    elevation: 3,
+  },
+  nextBtn :{
+    height: 55,
+    borderRadius: 6,
+    backgroundColor: '#007bff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
+  },
+  nextText: {
+    color: 'white',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 20
   }
 })
 

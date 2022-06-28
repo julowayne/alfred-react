@@ -8,23 +8,31 @@ import {useSelector } from 'react-redux';
 const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
   const api = apisauce.create({
       baseURL,
-      headers:{
-          // 'Cache-Control': 'no-cache',
-          'Accept': 'application/json',
-          'Authorization' : 'Bearer 46|oRvYRxSpSs8cg29BW5aD5E2uWeAlpsNdbDNW2CEr',
-      },
       timeout: 3000
   })
 
-  const getFiles = () => {
-    return api.get('files')
+  const getFiles = (token) => {
+    return api.get('files', { headers:{
+      'Accept': 'application/json',
+      'Authorization' : 'Bearer ' + token,
+    }})
   }
 
-  const deleteFile = (id) => {
-    return api.delete('files/'+ id)
+  const deleteFile = (token, id) => {
+    return api.delete('files/'+ id, {}, { headers:{
+      'Accept': 'application/json',
+      'Authorization' : 'Bearer ' + token,
+    }})
   }
 
-  return {getFiles, deleteFile}
+  const getGuarantorFiles = (token) => {
+    return api.get('guarantors/files', {}, { headers:{
+      'Accept': 'application/json',
+      'Authorization' : 'Bearer ' + token,
+    }})
+  }
+
+  return {getFiles, deleteFile, getGuarantorFiles}
 
 }
 

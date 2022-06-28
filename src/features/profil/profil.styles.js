@@ -7,6 +7,9 @@ const styles = StyleSheet.create({
     height: height,
     backgroundColor: '#e9ecef',
   },
+  firstButton: {
+    paddingTop: 15
+  },
   logout: {
     marginTop: 10,
     padding: 15,

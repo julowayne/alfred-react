@@ -8,6 +8,16 @@ const styles = StyleSheet.create({
   inner: {
     padding: 24,
   },
+  picker :{
+    backgroundColor: 'white',
+    elevation: 2, 
+  },
+  pickerCnt: {
+    borderRadius: 10, 
+    elevation: 2, 
+    borderColor: '#bdc3c7',
+    overflow: 'hidden'
+  },
   headerCtn: {
     overflow: 'hidden', 
     paddingBottom: 5, 
@@ -40,6 +50,19 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginTop: 24,
     marginBottom: 12
+  },
+  nextBtn :{
+    height: 55,
+    borderRadius: 6,
+    backgroundColor: '#007bff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
+  },
+  nextText: {
+    color: 'white',
+    fontFamily: 'Roboto-Medium',
+    fontSize: 20
   }
 })
 
