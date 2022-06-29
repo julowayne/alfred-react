@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: 'black',
     paddingHorizontal: 20,
-    paddingVertical: 15
+    paddingVertical: 15,
+    color: 'black'
   },
   followAppliesCnt: {
     marginTop: 15,
@@ -29,7 +30,14 @@ const styles = StyleSheet.create({
   },
   currentApplies: {
     color: '#007bff'
-  }
+  },
+  test:{
+    fontFamily: 'Roboto-Medium',
+    fontSize: 18,
+    color: 'black',
+    paddingTop: 40,
+    marginHorizontal: 20
+  },
 })
 
   export default styles;

@@ -24,7 +24,7 @@ class Profil extends React.Component {
   }
 
   render(){
-    const guarantor = this.props.guarantor.id;
+    const guarantor = this.props.guarantor.first_name;
     let guarantorFiles;
     if(guarantor != ""){
       guarantorFiles = <MyFile guarantorBool={true} navigation={this.props.navigation}/>
@@ -33,21 +33,20 @@ class Profil extends React.Component {
       <View style={styles.main}>
         <HeaderNavigation headerTitle="Mon profil"  navigation={this.props.navigation}/>
         <View style={styles.firstButton}>
-          <MyFile  guarantorBool={false} navigation={this.props.navigation}/>
+          <MyFile guarantorBool={false} navigation={this.props.navigation}/>
         </View>
         {guarantorFiles}
         <MyProfile navigation={this.props.navigation}/>
         <MyGuarantor navigation={this.props.navigation}/>
         <View style={styles.logout}>
-          <TouchableOpacity style={styles.logoutButton} onPress={() => { this.props.setBtnLoader(true), this.logout()}}>
-            {/* <Text style={styles.logoutText}>Me déconnecter</Text> */}
-            { !this.props.btnLoader ? <Text style={styles.logoutText}>Me déconnecter</Text> : 
-								<Lottieview
-									source={require('../../assets/animations/submit-btn.json')}
-									style={{ flex: 1}}
-									autoPlay
-									loop
-								/>}
+        <TouchableOpacity style={styles.logoutButton} onPress={() => { this.props.setBtnLoader(true), this.logout()}}>
+          { !this.props.btnLoader ? <Text style={styles.logoutText}>Me déconnecter</Text> : 
+              <Lottieview
+                source={require('../../assets/animations/submit-btn.json')}
+                style={{ flex: 1}}
+                autoPlay
+                loop
+              />}
           </TouchableOpacity>
         </View>
       </View>

@@ -1,23 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './my-file.styles'
-// import Lottie from 'lottie-react-native';
 
-// const animationRef = useRef<Lottie>(null)
 class MyFile extends React.Component {
   constructor(props){
     super(props)
   }
-
-// componentDidMount() {
-//     const { navigation } = this.props;
-//     this.focusListener = navigation.addListener('didFocus', () => {
-//       useEffect(() => {
-//         animationRef.current?.play()
-//         animationRef.current?.play(30, 120);
-//       }, [])
-//     });
-//   }
 
 openUserFiles = () => {
     this.props.navigation.navigate('Mes fichiers')

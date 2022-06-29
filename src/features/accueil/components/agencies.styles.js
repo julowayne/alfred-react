@@ -3,16 +3,29 @@ import { StyleSheet, Dimensions } from 'react-native';
 const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
-  test:{
-    fontFamily: 'Roboto-Regular',
-    fontSize: 18,
-    color: 'black',
-    paddingHorizontal: 20,
-    paddingTop: 40
+  container :{
+    paddingHorizontal: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  agencyCard: {
+    borderRadius: 4,
+    elevation: 2,
+    width: '100%'
   },
   agency :{
-    borderRadius: 6
+    flexDirection: 'row',
+  },
+  agencyName:{
+    fontFamily: 'Roboto-Bold',
+    fontSize: 20,
+    color: 'black',
+    marginHorizontal: 10
+  },
+  news :{
+    marginHorizontal: 10
   }
+
 })
 
   export default styles;

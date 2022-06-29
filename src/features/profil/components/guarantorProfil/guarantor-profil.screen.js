@@ -1,9 +1,8 @@
 import React from 'react';
-import { KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard , View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native';
+import { KeyboardAvoidingView,TouchableWithoutFeedback, Keyboard , View, TouchableOpacity, Text, TextInput, ScrollView, Alert } from 'react-native';
 import styles from './guarantor-profil.styles';
 import {connect} from 'react-redux';
 import {setLogging, setUser, setGuarantor } from '../../../onboarding/landing/landing.redux';
-import {Picker} from '@react-native-picker/picker';
 import { showMessage } from "react-native-flash-message";
 import editProfilServices from './guarantor-profil.services';
 
@@ -14,6 +13,7 @@ const api = editProfilServices.create()
 class EditGuarantorProfil extends React.Component {
   constructor(props){
     super(props)
+    console.log(props.user.id)
     this.state = {
       first_name: this.props.user.first_name,
       last_name: this.props.user.last_name,
@@ -22,6 +22,10 @@ class EditGuarantorProfil extends React.Component {
 
   updateGuarantor = async () => {
     let updateGuarantor = {}
+
+    if((this.state.first_name || this.state.last_name) === ""){
+      Alert.alert('Les champs ne peuvent pas être vide')
+    }
     if(this.state.first_name != this.props.guarantor.first_name){
       updateGuarantor.first_name = this.state.first_name
     }
@@ -80,7 +84,7 @@ class EditGuarantorProfil extends React.Component {
   }
 
   render(){
-    const guarantor = this.props.guarantor.id;
+    const guarantor = this.props.guarantor.first_name;
     let button;
     if(guarantor != ""){
       button = <TouchableOpacity style={styles.profilButton} onPress={this.updateGuarantor} >
@@ -101,7 +105,10 @@ class EditGuarantorProfil extends React.Component {
             <TextInput placeholder="Thomas Desessarts" style={styles.input} defaultValue={this.props.guarantor.last_name} onChangeText={(last_name) => this.setState({last_name : last_name})} />
             <Text style={styles.label}>Prénom</Text>
             <TextInput placeholder="Jules" style={styles.input} defaultValue={this.props.guarantor.first_name}  onChangeText={(first_name) => this.setState({first_name : first_name})} />
-            {button}
+            {/* {button} */}
+            <TouchableOpacity style={styles.profilButton} onPress={this.createGuarantor} >
+                <Text style={styles.profilText}>Ajouter</Text>
+              </TouchableOpacity>
           </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

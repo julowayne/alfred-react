@@ -67,6 +67,8 @@ class Files extends React.Component {
         });
       }, 2200)
       this.updateFileList()
+      let notification = {type: "Modification du dossier", message: "Votre fichier a bien été supprimé"}
+      this.props.setNotifications(notification)
     } else {
       setTimeout(() => {
         showMessage({

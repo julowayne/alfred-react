@@ -59,7 +59,7 @@ export const landingSlice = createSlice({
             state.btnLoader = action.payload
         },
         setNotifications : (state, action) => {
-            state.notifications = action.payload
+            state.notifications.push(action.payload)
         },
     }
 })

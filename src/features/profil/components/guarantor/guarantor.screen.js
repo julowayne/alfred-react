@@ -11,11 +11,11 @@ class MyGuarantor extends React.Component {
   }
 
 updateOrCreateGuarantor = () => {
-  if(this.props.guarantor.first_name != ""){
-    this.props.navigation.navigate('Mettre à jour mon garant')
-  } else {
+  // if(this.props.guarantor.first_name != ""){
+    // this.props.navigation.navigate('Mettre à jour mon garant')
+  // } else {
     this.props.navigation.navigate('Ajouter mon garant')
-  }
+  // }
 }
 
 render(){

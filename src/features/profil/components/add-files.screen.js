@@ -54,6 +54,7 @@ class AddFiles extends React.Component {
     if(fieldId != 0) this.state.fieldIdVal = fieldId
 
     if(this.props.guarantorBool) {
+      console.log('adding guarantor file')
       const response = await api.uploadFiles(this.props.user.token, file, this.state.fieldIdVal, this.props.guarantor.id)
       console.log('response:', JSON.stringify(response.data))
       console.log('response:', JSON.stringify(response.status))
@@ -83,7 +84,8 @@ class AddFiles extends React.Component {
           });
         }, 2200)
         this.updateFileList()
-        this.props.setNotifications({message: "Votre fichier a bien été ajouté"})
+        let notification = {type: "Modification du dossier", message: "Votre fichier a bien été ajouté"}
+        this.props.setNotifications(notification)
       } else {
         setTimeout(() => {
           showMessage({
@@ -142,19 +144,8 @@ class AddFiles extends React.Component {
     return (
       <View style={styles.fonctions}>
         <View>
-          <TouchableOpacity onPress={() => this.importFile(this.state.source[1])}  style={styles.addFile}>
-            <Image source={require("../../../assets/add.png")} style={styles.image} />
-            <Text style={styles.add}>Ajouter</Text>
-          </TouchableOpacity>
-        </View>
-        <View>
-          <TouchableOpacity onPress={() => this.importFile(this.state.source[0])} style={styles.addFile}>
-            <Image source={require("../../../assets/camera.png")} style={styles.image} />
-              <View style={styles.container}>
-                <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'center' }}>
-                  <Text style={styles.add}> Prendre une photo </Text>
-                </View>
-            </View>
+          <TouchableOpacity onPress={() => this.importFile(this.state.source[1])}  style={styles.addButton}>
+            <Text style={styles.add}>Ajouter un fichier</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.centeredView}>

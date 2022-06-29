@@ -4,7 +4,7 @@ import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import { Card } from '@rneui/themed';
 import styles from './home.styles'
 import {connect} from 'react-redux';
-import {setLogging, setFields, setFiles } from '../onboarding/landing/landing.redux'
+import {setLogging, setFields, setFiles, setGuarantor, setGuarantorFiles } from '../onboarding/landing/landing.redux'
 
 import addFilesServices from './home.services'
 import Agencies from './components/agencies.screen';
@@ -24,6 +24,8 @@ class Home extends React.Component {
   componentDidMount(){
     this.getFileTypes()
     this.getFiles()
+    // this.getGuarantor()
+    this.getGuarantorFiles()
   }
 
   getFileTypes = async () => {
@@ -36,6 +38,12 @@ class Home extends React.Component {
     console.log(response.data)
     this.props.setFiles(response.data.data)
   }
+  getGuarantorFiles = async () => {
+    const response = await api.getGuarantorFiles(this.props.user.token, this.props.guarantor.id)
+    console.log(response.data)
+    this.props.setGuarantorFiles(response.data.data)
+  }
+
 
   logout = () => {
     this.props.setLogging(false)
@@ -59,6 +67,7 @@ class Home extends React.Component {
             Tu as <Text onPress={this.goToApplies} style={styles.currentApplies}>4 dossiers en cours</Text>, n'hésites pas a suivre leur évolution !
             </Text>               
           </Card>
+          <Text style={styles.test}>Ne loupes aucune des dernières annonces</Text>
           <Agencies/>
         </View>
       </View>
@@ -68,13 +77,13 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    
     openedFirst: state.landing.openedFirst,
     logging: state.landing.logging,
     fields: state.landing.fields,
     user: state.landing.user,
     files: state.landing.files,
     guarantorFiles : state.landing.guarantorFiles,
+    guarantor : state.landing.guarantor,
     notifications: state.landing.notifications
   }
 }
@@ -82,7 +91,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setLogging: (loggin) => dispatch(setLogging(loggin)),
     setFields: (fields) => dispatch(setFields(fields)),
-    setFiles: (files) => dispatch(setFiles(files))
+    setFiles: (files) => dispatch(setFiles(files)),
+    setGuarantor: (guarantor) => dispatch(setGuarantor(guarantor)),
+    setGuarantorFiles: (files) => dispatch(setGuarantorFiles(files)),
   };
 };
 

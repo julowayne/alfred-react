@@ -4,15 +4,20 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   fonctions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
-    borderBottomWidth: 1,
+    padding: 15,
   },
   add :{
     fontSize: 20,
     fontFamily: 'Roboto-Medium',
-    color: 'black'
+    color: 'white'
+  },
+  addButton :{
+    height: 55,
+    borderRadius: 6,
+    backgroundColor: '#007bff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4
   },
   addFile: {
     flexDirection: 'row',

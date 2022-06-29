@@ -12,10 +12,15 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
       'Authorization' : 'Bearer ' + token
     }})
   }
-
-
   const getFiles = (token) => {
     return api.get('files', {}, { headers:{
+      'Accept': 'application/json',
+      'Authorization' : 'Bearer ' + token,
+    }})
+  }
+  
+  const getGuarantor = (token, id) => {
+    return api.get('guarantors/' + id, {}, { headers:{
       'Accept': 'application/json',
       'Authorization' : 'Bearer ' + token,
     }})
@@ -27,7 +32,7 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
     }})
   }
 
-  return {fields, getFiles, getGuarantorFiles}
+  return {fields, getFiles, getGuarantorFiles, getGuarantor}
 
 }
 

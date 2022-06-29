@@ -14,7 +14,7 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
   }
 
 
-  const createGuarantor = (token, guarantor, userId) => {
+  const createGuarantor = (token, guarantor) => {
 
     return api.post('/guarantors/create', guarantor , 
       { 
@@ -22,11 +22,7 @@ const create = (baseURL = 'https://alfred-api-eu.herokuapp.com/api/') => {
           'Accept': 'application/json',
           'Authorization' : 'Bearer ' + token,
       }
-    }, {
-        user_id : userId,
-        first_name: guarantor.first_name,
-        last_name: guarantor.last_name,
-      })
+    })
   }
 
   return {updateGuarantor, createGuarantor}

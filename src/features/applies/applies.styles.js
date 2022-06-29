@@ -9,8 +9,6 @@ const styles = StyleSheet.create({
   container: {
     padding: 10,
     flexDirection: 'row',
-    // justifyContent: 'center',
-    // alignItems: 'center',
   },
   title :{
     fontSize: 20,
@@ -89,14 +87,6 @@ const styles = StyleSheet.create({
   },
   //swiper
   wrapper: {},
-  // slide1: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // slide2: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // }
 })
 
   export default styles;

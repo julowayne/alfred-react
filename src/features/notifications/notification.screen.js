@@ -8,23 +8,6 @@ class Notification extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      list :[
-        {
-          name: 'Mise à jour',
-          avatar_url: require('../../assets/alfred32.png'),
-          content: "Votre dossier pour la location X a été refusé"
-        },
-        {
-          name: 'Mise à jour',
-          avatar_url: require('../../assets/alfred32.png'),
-          content: "Votre agent vous informe qu'il manque des fichiers pour votre dossier pour le logement Y"
-        },
-        {
-          name: 'Mise à jour',
-          avatar_url: require('../../assets/alfred32.png'),
-          content: "Votre dossier pour la l'appartement 234 est en cours de traitement"
-        },
-      ],
     }
   }
 
@@ -33,10 +16,10 @@ keyExtractor = (item, index) => index.toString()
 
 renderItem = ({ item }) => (
   <ListItem bottomDivider>
-    <Avatar source={item.avatar_url} />
+    <Avatar source={require('../../assets/alfred32.png')} />
     <ListItem.Content>
-      <ListItem.Title style={styles.title}>{item.name}</ListItem.Title>
-      <ListItem.Subtitle>{item.content}</ListItem.Subtitle>
+      <ListItem.Title style={styles.title}>{item.type}</ListItem.Title>
+      <ListItem.Subtitle>{item.message}</ListItem.Subtitle>
     </ListItem.Content>
   </ListItem>
 )
@@ -47,7 +30,7 @@ renderItem = ({ item }) => (
         <FlatList
           nestedScrollEnabled 
           keyExtractor={this.keyExtractor}
-          data={this.state.list}
+          data={this.props.notifications}
           renderItem={this.renderItem}
         />
       </View>
@@ -61,7 +44,8 @@ const mapStateToProps = state => {
     user: state.landing.user,
     files: state.landing.files,
     guarantor: state.landing.guarantor,
-    btnLoader: state.landing.btnLoader
+    btnLoader: state.landing.btnLoader,
+    notifications: state.landing.notifications
   }
 }
 
