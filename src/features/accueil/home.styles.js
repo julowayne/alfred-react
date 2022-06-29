@@ -19,9 +19,10 @@ const styles = StyleSheet.create({
   },
   followAppliesCnt: {
     marginTop: 15,
-    borderRadius: 6,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
+    marginHorizontal:20
   },
   followAppliesText :{
     fontFamily: 'Roboto-Medium',

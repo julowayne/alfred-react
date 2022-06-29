@@ -16,7 +16,6 @@ class Agencies extends React.Component {
   render(){
     return (
       <View style={styles.container}>
-        <View>
         <Card containerStyle={styles.agencyCard}>
           <View style={styles.agency}>
             <View>
@@ -26,7 +25,7 @@ class Agencies extends React.Component {
             </View>
             <View>
               <Text style={styles.agencyName} onPress={() => Linking.openURL('https://www.seloger.com/location.htm#?BD=Head_LO_1')}>Se Loger</Text>
-              <Text style={styles.news}>5 nouvelles annonces selon vos critères de recherche</Text>
+              <Text style={styles.news}>5 nouvelles annonces selon vos {"\n"}critères de recherche</Text>
             </View>
           </View>
         </Card>
@@ -39,7 +38,7 @@ class Agencies extends React.Component {
             </View>
             <View>
               <Text style={styles.agencyName} onPress={() => Linking.openURL('https://www.logic-immo.com/location-immobilier.php')}>Stéphane Plaza</Text>
-              <Text style={styles.news}>3 nouvelles annonces selon vos critères de recherche</Text>
+              <Text style={styles.news}>3 nouvelles annonces selon vos {"\n"}critères de recherche</Text>
             </View>
           </View>
         </Card>
@@ -52,11 +51,10 @@ class Agencies extends React.Component {
             </View>
             <View>
               <Text style={styles.agencyName} onPress={() => Linking.openURL('https://www.orpi.com/location-immobiliere-paris/louer-appartement/')}>Orpi</Text>
-              <Text style={styles.news}>3 nouvelles annonces selon vos critères de recherche</Text>
+              <Text style={styles.news}>3 nouvelles annonces selon vos {"\n"}critères de recherche</Text>
             </View>
           </View>
         </Card>
-        </View>
       </View>
     );
   }

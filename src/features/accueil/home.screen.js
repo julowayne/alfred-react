@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, ScrollView } from 'react-native';
 import HeaderNavigation from '../headerNavigation/headerNavigation.screen';
 import { Card } from '@rneui/themed';
 import styles from './home.styles'
@@ -58,18 +58,21 @@ class Home extends React.Component {
     return (
       <View>
         <HeaderNavigation headerTitle="Accueil" navigation={this.props.navigation}/>
-        <View style={styles.main}>
-          <Text style={styles.hello}>
-            Bonjour {this.props.user.first_name} 👋
-          </Text>
-          <Card containerStyle={styles.followAppliesCnt}>
-            <Text style={styles.followAppliesText}>
-            Tu as <Text onPress={this.goToApplies} style={styles.currentApplies}>4 dossiers en cours</Text>, n'hésites pas a suivre leur évolution !
-            </Text>               
-          </Card>
-          <Text style={styles.test}>Ne loupes aucune des dernières annonces</Text>
-          <Agencies/>
-        </View>
+        <ScrollView>
+          <View style={styles.main}>
+            <Text style={styles.hello}>
+              Bonjour {this.props.user.first_name} 👋
+            </Text>
+            <Card containerStyle={styles.followAppliesCnt}>
+              <Text style={styles.followAppliesText}>
+              Tu as <Text onPress={this.goToApplies} style={styles.currentApplies}>4 dossiers en cours</Text>, n'hésites pas a suivre leur évolution !
+              </Text>               
+            </Card>
+            <Text style={styles.test}>Ne loupes aucune des dernières annonces</Text>
+            <Agencies />
+          </View>
+        </ScrollView>
+
       </View>
     );
   }

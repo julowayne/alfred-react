@@ -136,8 +136,8 @@ render(){
                               data={this.props.files}
                               renderItem={this.renderItem}
                             />  : <Lottieview
-                                    source={require('../../../../assets/animations/loader2.json')}
-                                    style={{ flex: 1}}
+                                    source={require('../../../../assets/animations/test.json')}
+                                    style={{width:"35%", height:"35%", justifyContent: "center", alignItems: "center"}}
                                     autoPlay
                                     loop
                                   />}

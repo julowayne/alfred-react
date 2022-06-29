@@ -164,7 +164,10 @@ class AddFiles extends React.Component {
                   <Image source={require('../../../assets/close.png')}/>
                 </TouchableOpacity>
               </View>
-                <Text style={styles.yourFile}><Image style={styles.pdf} source={require('../../../assets/pdf.png')}/>{ this.state.result ? this.state.result.name : '' }</Text>
+                <View style={styles.fileContainer}>
+                  <Image style={styles.pdf} source={require('../../../assets/pdf.png')}/>
+                  <Text style={styles.yourFile}>{ this.state.result ? this.state.result.name : '' }</Text>
+                </View>
                 <View style={styles.allNotif}>
                   <View style={styles.pickerCnt}>
                     <Picker style={styles.picker}

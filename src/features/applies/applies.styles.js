@@ -7,7 +7,8 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    paddingHorizontal: 10,
+    // paddingBottom:4,
     flexDirection: 'row',
   },
   title :{

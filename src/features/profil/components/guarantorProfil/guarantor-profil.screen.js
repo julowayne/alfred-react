@@ -44,6 +44,7 @@ class EditGuarantorProfil extends React.Component {
         duration: 3000,
         icon: "success",
       });
+      this.props.navigation.goBack()
     } else {
       console.log(response)
       showMessage({
@@ -72,6 +73,7 @@ class EditGuarantorProfil extends React.Component {
         duration: 3000,
         icon: "success",
       });
+      this.props.navigation.goBack()
     } else {
       console.log(response)
       showMessage({
@@ -84,7 +86,7 @@ class EditGuarantorProfil extends React.Component {
   }
 
   render(){
-    const guarantor = this.props.guarantor.first_name;
+    const guarantor = this.props.guarantor.id;
     let button;
     if(guarantor != ""){
       button = <TouchableOpacity style={styles.profilButton} onPress={this.updateGuarantor} >
@@ -105,10 +107,10 @@ class EditGuarantorProfil extends React.Component {
             <TextInput placeholder="Thomas Desessarts" style={styles.input} defaultValue={this.props.guarantor.last_name} onChangeText={(last_name) => this.setState({last_name : last_name})} />
             <Text style={styles.label}>Prénom</Text>
             <TextInput placeholder="Jules" style={styles.input} defaultValue={this.props.guarantor.first_name}  onChangeText={(first_name) => this.setState({first_name : first_name})} />
-            {/* {button} */}
-            <TouchableOpacity style={styles.profilButton} onPress={this.createGuarantor} >
+            {button}
+            {/* <TouchableOpacity style={styles.profilButton} onPress={this.createGuarantor} >
                 <Text style={styles.profilText}>Ajouter</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
           </ScrollView>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

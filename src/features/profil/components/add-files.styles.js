@@ -23,15 +23,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 10
   },
+  fileContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 30
+  },
   yourFile :{
     padding: 15,
     fontFamily: 'Roboto-Regular',
     fontSize: 20,
     color: 'black',
-    alignContent: 'center'
+    alignContent: 'center',
   },
   pdf :{
-    marginRight: 50
+    // marginTop: 10,
+    // width:10,
+    // height:10
   },
   image : {
     marginRight: 10

@@ -13,19 +13,19 @@ const Stack = createNativeStackNavigator();
 
 const appNavigator = () => {
     return (
-      <Stack.Navigator   screenOptions={{
+      <Stack.Navigator  screenOptions={{
         headerShown: false
       }}>
         <Stack.Screen name="bottomTabNavigator" component={BottomTabNavigator}/>
         <Stack.Screen name="authNavigator" component={AuthNavigator} />
         <Stack.Screen name="home" component={Home} />
         <Stack.Group screenOptions={{ headerStyle: { backgroundColor: '#20c997' } }} >
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mettre à jour mon profil" component={editProfil} />
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mettre à jour mon garant" component={guarantorScreen} />
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Ajouter mon garant" component={guarantorScreen} />
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Mes fichiers" component={Files}  initialParams={{guarantorFiles:false}}/>
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Fichiers garant" component={Files} initialParams={{guarantorFiles:true}}/>
-          <Stack.Screen options={{ headerBackVisible: true, headerShown: true }} name="Notifications" component={Notification} />
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: ""  }} name="Mettre à jour mon profil" component={editProfil} />
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: "" }} name="Mettre à jour mon garant" component={guarantorScreen} />
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: ""  }} name="Ajouter mon garant" component={guarantorScreen} />
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: ""  }} name="Mes fichiers" component={Files}  initialParams={{guarantorFiles:false}}/>
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: ""  }} name="Fichiers garant" component={Files} initialParams={{guarantorFiles:true}}/>
+          <Stack.Screen options={{ headerBackVisible: true, headerShown: true, headerTintColor: "black", headerBackTitle: ""  }} name="Notifications" component={Notification} />
         </Stack.Group>
       </Stack.Navigator>
     );

@@ -37,10 +37,11 @@ class HeaderNavigation extends React.Component {
           </TouchableOpacity>
           <TouchableWithoutFeedback onPress={this.openNotification}>
           <View style={styles.lottie}>
-            <Lottie
+            {/* <Lottie
               source={require('../../assets/animations/notification.json')}
               progress={this.state.progress}
-            />
+            /> */}
+            <Image style={{width:20, height:20}} source={require('./../../assets/notification.png')} />
           </View>
           </TouchableWithoutFeedback>
           {/* <Badge status="error" value="10" containerStyle={{ position: 'absolute', top: -4, right: -4 }} badgeStyle={{borderWidth: 0}} /> */}

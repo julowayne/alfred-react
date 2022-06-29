@@ -4,9 +4,10 @@ const {width, height} = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container :{
-    paddingHorizontal: 40,
+    marginHorizontal: 20,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    // width: '100%'
   },
   agencyCard: {
     borderRadius: 4,

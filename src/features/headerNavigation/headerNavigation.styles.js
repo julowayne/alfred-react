@@ -15,9 +15,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    paddingTop:10
   },
   lottie :{
-    width: '10%'
+    width: '10%',
+    justifyContent: "center",
+    marginTop: 5
   },
   navigation: {
     marginTop: 8,
